@@ -1,17 +1,18 @@
 <template>
-  <div class="about">
+  <div>
     <LoginForm />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import LoginForm from '@/components/tailwind/LoginForm.vue';
+import LoginForm from './tailwind/LoginForm.vue';
 
 export default Vue.extend({
-  name: 'About',
+  name: 'LandingPage',
   components: {
     LoginForm,
   },
 });
+
 </script>
