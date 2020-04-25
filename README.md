@@ -2,7 +2,8 @@
 
 The front end web application for `remoteshiva.org`.
 
-
+## Quick Start
+1. `yarn install && yarn dev`
 
 
 #### References
