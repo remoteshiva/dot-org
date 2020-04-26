@@ -10,8 +10,5 @@ body {
 h1, h2, h3 {
   font-family: 'Lora', serif;
 }
-@import "tailwindcss/base";
 
-@import "tailwindcss/components";
-
-@import "tailwindcss/utilities";
+@import "tailwindcss";
