@@ -7,7 +7,9 @@ import {
   useRouteMatch,
   useParams,
 } from 'react-router-dom';
+import Button from '../components/atoms/Button';
 import livingRoom from '../assets/images/livingroom.png';
+import { theme } from '../assets/theme';
 
 export default function App() {
   return (
@@ -60,7 +62,9 @@ function ApplicationShell() {
                   <div className="flex-shrink-0">logo goes here</div>
                   <div className="hidden md:block">
                     <div className="ml-10 flex items-baseline">
-                      this is a bar of navigation
+                      <Button theme={theme} themeType="primary">
+                        click me
+                      </Button>
                     </div>
                   </div>
                 </div>
