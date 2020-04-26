@@ -67,5 +67,13 @@
         ]
       }
     }
-  }
+  },
+  "overrides": [
+    {
+      "files": ["webpack.config.ts"],
+      "rules": {
+        "import/no-extraneous-dependencies": "off"
+      }
+    }
+  ]
 }
