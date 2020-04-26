@@ -34,7 +34,10 @@ module.exports = {
     flexGrow: ['responsive'],
     flexShrink: ['responsive'],
     float: ['responsive'],
-    fontFamily: ['responsive'],
+    fontFamily: {
+      display: ['Lora', 'serif'],
+      body: ['Lato', 'sans-serif'],
+    },
     fontWeight: ['responsive', 'hover', 'focus'],
     height: ['responsive'],
     lineHeight: ['responsive'],
