@@ -7,6 +7,7 @@ import {
   useRouteMatch,
   useParams,
 } from 'react-router-dom';
+import fox from '../assets/fox.png';
 
 export default function App() {
   return (
@@ -204,7 +205,7 @@ function Topics() {
   return (
     <div>
       <h2>Topics</h2>
-
+      <img src={fox} alt="foxy boi" />
       <ul>
         <li>
           <Link to={`${match.url}/components`}>Components</Link>

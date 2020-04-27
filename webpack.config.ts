@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
-
 import path from 'path';
 import HTMLPlugin from 'html-webpack-plugin';
+import ReactRefreshPlugin from '@webhotelier/webpack-fast-refresh';
 
 const PATHS = {
   src: path.resolve(path.join(__dirname, './src')),
@@ -12,28 +12,26 @@ const PATHS = {
 export default {
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.jsx', '.json'],
+    alias: {
+      '~': PATHS.src,
+    },
   },
   devServer: {
-    contentBase: path.join(__dirname, 'public'),
+    contentBase: PATHS.public,
     compress: true,
     port: 3000,
+    historyApiFallback: true,
   },
-  entry: path.resolve(__dirname, 'src', 'index.tsx'),
+  entry: path.join(PATHS.src, 'index'),
   output: {
-    path: PATHS.dist,
-    publicPath: PATHS.public,
+    publicPath: '/',
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(t|j)sx$/,
         exclude: /node_modules/,
-        loader: ['babel-loader', 'eslint-loader'],
-      },
-      {
-        test: /\.ts(x?)$/,
-        exclude: /node_modules/,
-        use: [{ loader: 'ts-loader' }, { loader: 'eslint-loader' }],
+        use: ['babel-loader', 'eslint-loader'],
       },
       {
         test: /\.css$/,
@@ -61,16 +59,20 @@ export default {
       },
       {
         test: /\.(png|svg|jpg|gif)$/i,
-        use: ['file-loader'],
-      },
-      {
-        enforce: 'pre',
-        test: /\.js$/,
-        loader: 'source-map-loader',
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              fallback: require.resolve('file-loader'),
+              limit: 8192,
+            }
+          }
+        ]
       },
     ],
   },
   plugins: [
+    new ReactRefreshPlugin(),
     new HTMLPlugin({
       template: path.join(PATHS.public, 'index.html'),
     }),
