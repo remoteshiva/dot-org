@@ -163,7 +163,9 @@ export default function Navigation({ theme }: NavigationProps) {
             <div className="flex justify-between h-16">
               <div className="flex">
                 <div className="flex-shrink-0 flex items-center">
-                  <div className="block sm:hidden md:hidden lg:hidden w-auto">MOBILE</div>
+                  <div className="block sm:hidden md:hidden lg:hidden w-auto">
+                    MOBILE
+                  </div>
                   <div className="hidden sm:block lg:block w-auto">logo</div>
                 </div>
               </div>
