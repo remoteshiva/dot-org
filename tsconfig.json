@@ -11,10 +11,16 @@
     "typeRoots": [
       "./node_modules/@types",
       "./types"
-    ]
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "~": ["./src"],
+      "~/*": ["./src/*"]
+    }
   },
   "include": [
-    "src",
-    "custom.d.ts"
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "types/**/*.d.ts"
   ]
 }
