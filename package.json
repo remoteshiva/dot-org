@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "@types/html-webpack-plugin": "^3.2.2",
+    "@types/styled-components": "^5.1.0",
     "@types/webpack": "^4.41.12",
     "@webhotelier/webpack-fast-refresh": "^2.0.0",
     "babel-loader": "^8.1.0",

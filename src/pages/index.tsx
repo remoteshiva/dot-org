@@ -9,7 +9,6 @@ import {
 } from 'react-router-dom';
 import Button from '../components/atoms/Button';
 import Navigation from '../components/molecules/Navigation';
-import livingRoom from '../assets/images/livingroom.png';
 import { theme } from '../assets/theme';
 
 export default function App() {
