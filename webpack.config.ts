@@ -29,7 +29,7 @@ export default {
   module: {
     rules: [
       {
-        test: /\.(t|j)sx$/,
+        test: /\.(t|j)sx?$/,
         exclude: /node_modules/,
         use: ['babel-loader', 'eslint-loader'],
       },
