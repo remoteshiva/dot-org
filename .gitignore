@@ -70,6 +70,7 @@ web_modules/
 
 # dotenv environment variables file
 .env
+.env.dev
 .env.test
 .env.prod
 
@@ -109,8 +110,13 @@ dist
 .vscode-test
 
 # yarn v2
-
 .yarn/cache
 .yarn/unplugged
 .yarn/build-state.yml
 .pnp.*
+
+# Webstorm IDE
+.idea/
+
+# Firebase
+.firebase/
