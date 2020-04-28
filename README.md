@@ -9,7 +9,7 @@ The web application for `remoteshiva.org`.
 
 ### Front end
 * React/TypeScript/Babel/Webpack
-* `styled-components` + `styled-system` + Tailwind UI
+* `styled-components` + Tailwind UI
 * `react-i18next`
 * Peruse the `package.json` for more detail!
 
