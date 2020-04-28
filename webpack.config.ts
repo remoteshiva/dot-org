@@ -2,6 +2,7 @@
 import path from 'path';
 import HTMLPlugin from 'html-webpack-plugin';
 import ReactRefreshPlugin from '@webhotelier/webpack-fast-refresh';
+import Dotenv from 'dotenv-webpack';
 
 const PATHS = {
   src: path.resolve(path.join(__dirname, './src')),
@@ -73,6 +74,7 @@ export default {
   },
   plugins: [
     new ReactRefreshPlugin(),
+    new Dotenv(),
     new HTMLPlugin({
       template: path.join(PATHS.public, 'index.html'),
     }),
