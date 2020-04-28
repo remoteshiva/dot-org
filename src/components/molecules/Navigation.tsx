@@ -70,11 +70,11 @@ function StepCard({
 
   const Title = styled.h1`
     display: flex;
-    font-size: 24px;
+    font-size: 18px;
     color: ${theme.text.primary};
     padding-top: 18px;
-    min-height: 80px;
-    max-height: 120px;
+    min-height: 48px;
+    max-height: 140px;
   `;
 
   const Body = styled.p`
@@ -202,7 +202,7 @@ function Home({ theme }: HomeProps) {
           style={{ padding: '14px', textAlign: 'center' }}
           className="flex justify-center"
         >
-          Organize shiva, online
+          Be together for shiva, online
         </h1>
         <div
           style={{
@@ -245,7 +245,7 @@ function Home({ theme }: HomeProps) {
         <h1
           style={{
             padding: '24px',
-            fontSize: '2.5rem',
+            fontSize: '2rem',
             textAlign: 'center',
             backgroundColor: '#f9f4f0',
           }}
@@ -283,11 +283,107 @@ function Home({ theme }: HomeProps) {
           justifyContent: 'center',
         }}
       >
-        <div style={{ padding: '48px' }}>
+        <div style={{ padding: '60px' }}>
           <img
             src={TipsIllustration}
             alt="two people in front of computers on a video call"
           />
+        </div>
+        <div style={{ padding: '48px', width: '400px' }}>
+          <h1 style={{ fontSize: '2rem' }}>Tips for holding a remote shiva</h1>
+          <p
+            style={{
+              color: `${theme.text.quarternary}`,
+              fontSize: '14px',
+              paddingTop: '18px',
+            }}
+          >
+            As part of our design process, we talked to people that have
+            recently held or participated in virtual shiva gatherings over the
+            past few months. Here’s what we’ve learned has worked best when
+            holding a shiva online.
+          </p>
+        </div>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          backgroundColor: '#fdfaf9',
+          padding: '60px',
+          width: '100%',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        <h1 style={{ fontSize: '2rem' }}>About us</h1>
+        <p
+          style={{
+            color: `${theme.text.quarternary}`,
+            fontSize: '14px',
+            paddingTop: '18px',
+            paddingBottom: '18px',
+            textAlign: 'center',
+            maxWidth: '600px',
+          }}
+        >
+          Remote Shiva is entirely volunteer run. The initiative began as a way
+          to address the unique needs of Jews sitting shiva during the time of
+          COVID-19, when people cannot physically gather. We are pluralistic at
+          our core, and we’re dedicated to making it as easy as possible for
+          anyone to have a shiva remotely.
+        </p>
+        <div style={{ paddingBottom: '24px' }}>
+          <Button size="big" themeType="primary" theme={theme}>
+            <Link
+              to={{
+                pathname: '/about',
+              }}
+            >
+              Learn more
+            </Link>
+          </Button>
+        </div>
+      </div>
+      <div
+        style={{
+          fontSize: '2.5rem',
+          paddingTop: '24px',
+          backgroundColor: '#f4ede7',
+          flexDirection: 'column',
+        }}
+        className="flex justify-center align-center"
+      >
+        <h1
+          style={{
+            padding: '24px',
+            fontSize: '2rem',
+            textAlign: 'center',
+          }}
+          className="flex justify-center"
+        >
+          Get in touch
+        </h1>
+        <div
+          className="flex"
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+            textAlign: 'center',
+            maxWidth: '600px',
+            fontSize: '14px',
+            color: `${theme.text.primary}`,
+          }}
+        >
+          <p>We&apos;d love to hear from you.</p>
+        </div>
+        <div
+          style={{ padding: '24px', display: 'flex', justifyContent: 'center' }}
+        >
+          {/* <Button size="big" theme={theme} themeType="primary">
+            See an example Remote Shiva
+          </Button> */}
         </div>
       </div>
     </div>
@@ -301,11 +397,11 @@ export default function Navigation({ theme }: NavigationProps) {
       className: 'ml-10 inline-flex items-center',
       content: 'How it works',
     },
-    {
-      to: '/sample-remote-shiva',
-      className: 'ml-10 inline-flex items-center',
-      content: 'Sample Remote Shiva',
-    },
+    // {
+    //   to: '/sample-remote-shiva',
+    //   className: 'ml-10 inline-flex items-center',
+    //   content: 'Sample Remote Shiva',
+    // },
     {
       to: '/resources',
       className: 'ml-10 inline-flex items-center',

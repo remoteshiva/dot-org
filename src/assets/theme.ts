@@ -10,6 +10,7 @@ export interface Theme {
     primary: string;
     secondary: string;
     tertiary: string;
+    quarternary: string;
   };
 }
 
@@ -25,5 +26,6 @@ export const theme: Theme = {
     primary: '#41413a',
     secondary: '#f9f4f0',
     tertiary: '#a09b8f',
+    quarternary: '#7b776c',
   },
 };
