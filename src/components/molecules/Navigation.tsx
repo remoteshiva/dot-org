@@ -9,9 +9,9 @@ import {
   Switch,
 } from 'react-router-dom';
 import Button from '../atoms/Button';
-import livingroom from '../../assets/images/livingroom.png';
 import { Theme } from '../../assets/theme';
 import TipsIllustration from '../../assets/images/illustration-for-tips.svg';
+import livingroom from '../../assets/images/livingroom.png';
 
 interface NavigationProps {
   theme: Theme;
@@ -259,7 +259,7 @@ function Home({ theme }: HomeProps) {
         >
           {steps.map((step) => (
             <StepCard
-              key="step.number"
+              key={step.number}
               width="250px"
               height="100%"
               theme={theme}
