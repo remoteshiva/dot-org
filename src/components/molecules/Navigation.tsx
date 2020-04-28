@@ -308,7 +308,7 @@ function Home({ theme }: HomeProps) {
               paddingTop: '18px',
             }}
           >
-            As part of our design process, we talked to people that have
+            As part of our design process, we spoke with people who have
             recently held or participated in virtual shiva gatherings over the
             past few months. Here’s what we’ve learned has worked best when
             holding a shiva online.
