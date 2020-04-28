@@ -10,8 +10,9 @@ import {
 } from 'react-router-dom';
 import Button from '../atoms/Button';
 import { Theme } from '../../assets/theme';
-import TipsIllustration from '../../assets/images/illustration-for-tips.svg';
+import Tips from '../../assets/images/illustration-for-tips.svg';
 import livingroom from '../../assets/images/livingroom.png';
+import Logo from '../../assets/images/logo.svg';
 
 interface NavigationProps {
   theme: Theme;
@@ -193,7 +194,7 @@ function Home({ theme }: HomeProps) {
     <div style={{ width: '100%' }}>
       <StyledHome>
         <div
-          style={{ paddingTop: '60px', letterSpacing: '1px' }}
+          style={{ fontSize: '16px', paddingTop: '60px', letterSpacing: '1px' }}
           className="flex align-center justify-center"
         >
           COMING SOON
@@ -213,8 +214,9 @@ function Home({ theme }: HomeProps) {
           }}
           className="flex align-center justify-center"
         >
-          We&apos;re here to help mourners and their extended communities gather
-          together for shiva digitally.
+          We&apos;re here to help mourners who aren’t able to have a traditional
+          in-person shiva to recreate this experience as best as possible
+          online.
           <br />
         </div>
         <div
@@ -286,15 +288,22 @@ function Home({ theme }: HomeProps) {
       >
         <div style={{ padding: '60px' }}>
           <img
-            src={TipsIllustration}
+            src={Tips}
             alt="two people in front of computers on a video call"
           />
         </div>
-        <div style={{ padding: '48px', width: '400px' }}>
+        <div
+          style={{
+            padding: '48px',
+            width: '400px',
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
           <h1 style={{ fontSize: '2rem' }}>Tips for holding a remote shiva</h1>
           <p
             style={{
-              color: `${theme.text.quarternary}`,
+              color: `${theme.text.tertiary}`,
               fontSize: '14px',
               paddingTop: '18px',
             }}
@@ -304,6 +313,25 @@ function Home({ theme }: HomeProps) {
             past few months. Here’s what we’ve learned has worked best when
             holding a shiva online.
           </p>
+          <div
+            style={{
+              paddingBottom: '24px',
+              paddingTop: '12px',
+              justifyContent: 'center',
+              alignItems: 'center',
+              display: 'flex',
+            }}
+          >
+            <Button size="big" themeType="primary" theme={theme}>
+              <Link
+                to={{
+                  pathname: '/about',
+                }}
+              >
+                Learn more
+              </Link>
+            </Button>
+          </div>
         </div>
       </div>
       <div
@@ -320,7 +348,7 @@ function Home({ theme }: HomeProps) {
         <h1 style={{ fontSize: '2rem' }}>About us</h1>
         <p
           style={{
-            color: `${theme.text.quarternary}`,
+            color: `${theme.text.tertiary}`,
             fontSize: '14px',
             paddingTop: '18px',
             paddingBottom: '18px',
@@ -334,17 +362,6 @@ function Home({ theme }: HomeProps) {
           our core, and we’re dedicated to making it as easy as possible for
           anyone to have a shiva remotely.
         </p>
-        <div style={{ paddingBottom: '24px' }}>
-          <Button size="big" themeType="primary" theme={theme}>
-            <Link
-              to={{
-                pathname: '/about',
-              }}
-            >
-              Learn more
-            </Link>
-          </Button>
-        </div>
       </div>
       <div
         style={{
@@ -366,25 +383,15 @@ function Home({ theme }: HomeProps) {
           Get in touch
         </h1>
         <div
-          className="flex"
           style={{
-            flexDirection: 'row',
+            paddingBottom: '24px',
+            display: 'flex',
             justifyContent: 'center',
-            alignItems: 'center',
-            textAlign: 'center',
-            maxWidth: '600px',
-            fontSize: '14px',
             color: `${theme.text.primary}`,
+            fontSize: '16px',
           }}
         >
           <p>We&apos;d love to hear from you.</p>
-        </div>
-        <div
-          style={{ padding: '24px', display: 'flex', justifyContent: 'center' }}
-        >
-          {/* <Button size="big" theme={theme} themeType="primary">
-            See an example Remote Shiva
-          </Button> */}
         </div>
       </div>
     </div>
@@ -438,7 +445,9 @@ export default function Navigation({ theme }: NavigationProps) {
                   <div className="block sm:hidden md:hidden lg:hidden w-auto">
                     MOBILE
                   </div>
-                  <div className="hidden sm:block lg:block w-auto">logo</div>
+                  <div className="hidden sm:block lg:block w-auto">
+                    <img src={Logo} alt="RemoteShiva yahrzeit candle logo" />
+                  </div>
                 </div>
               </div>
               <div
