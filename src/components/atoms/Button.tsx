@@ -3,7 +3,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import { Theme } from '../../assets/theme';
 
 interface ButtonProps {
-  children: string;
+  children: string | JSX.Element;
   className?: string;
   theme: Theme;
   themeType: 'primary' | 'secondary';
@@ -18,10 +18,10 @@ export default function Button({
   size = 'normal',
 }: ButtonProps) {
   const StyledButton = styled.button`
-  font-size: ${size === 'normal' ? '1rem' : '1.25rem'};
+  font-size: 1rem;
   margin: 1em;
   padding: ${size === 'normal' ? '0.25em 1em' : '0.75em 1.75em'};
-  border-radius: 6px;
+  border-radius: 4px;
   transition: all 150ms ease-in-out 0ms;
   color: ${theme.text.secondary};
   background-color: ${

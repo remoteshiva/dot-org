@@ -3,12 +3,13 @@ export interface Theme {
     primary: string;
     secondary: string;
     offWhite: string;
-    quarternary: string;
+    tertiary: string;
     warmGray: string;
   };
   text: {
     primary: string;
     secondary: string;
+    tertiary: string;
   };
 }
 
@@ -17,11 +18,12 @@ export const theme: Theme = {
     primary: '#924623',
     secondary: '#398e8f',
     offWhite: '#f9f4f0',
-    quarternary: '#f4ede7',
+    tertiary: '#f4ede7',
     warmGray: '#41413a',
   },
   text: {
     primary: '#41413a',
-    secondary: '#ffffff',
+    secondary: '#f9f4f0',
+    tertiary: '#a09b8f',
   },
 };

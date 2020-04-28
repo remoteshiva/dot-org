@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import {
   BrowserRouter as Router,
+  Link,
   NavLink,
   NavLinkProps,
   Route,
@@ -10,6 +11,7 @@ import {
 import Button from '../atoms/Button';
 import livingroom from '../../assets/images/livingroom.png';
 import { Theme } from '../../assets/theme';
+import TipsIllustration from '../../assets/images/illustration-for-tips.svg';
 
 interface NavigationProps {
   theme: Theme;
@@ -20,6 +22,77 @@ interface NavigationLinkProps extends NavLinkProps {
   className?: string;
   children: string;
   to: string;
+}
+
+interface StepCardProps {
+  theme: Theme;
+  className?: string;
+  title: string;
+  body: string;
+  step: string;
+  width: string;
+  height: string;
+}
+
+function StepCard({
+  width,
+  height,
+  theme,
+  className,
+  title,
+  body,
+  step,
+}: StepCardProps) {
+  const StyledCard = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: ${width};
+    height: ${height};
+    padding: 18px;
+    text-align: center;
+  `;
+
+  const StepBubble = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: ${theme.colors.primary};
+    background-color: ${theme.colors.tertiary};
+    width: 36px;
+    height: 36px;
+    border-radius: 100%;
+    font-family: Lato;
+    padding: 18px;
+  `;
+
+  const Title = styled.h1`
+    display: flex;
+    font-size: 24px;
+    color: ${theme.text.primary};
+    padding-top: 18px;
+    min-height: 80px;
+    max-height: 120px;
+  `;
+
+  const Body = styled.p`
+    display: flex;
+    font-size: 16px;
+    font-family: Lato;
+    color: ${theme.text.tertiary};
+    padding-top: 14px;
+    padding-bottom: 14px;
+  `;
+
+  return (
+    <StyledCard width={width} height={height} className={className}>
+      <StepBubble>{step}</StepBubble>
+      <Title>{title}</Title>
+      <Body>{body}</Body>
+    </StyledCard>
+  );
 }
 
 function NavigationLink({
@@ -35,6 +108,7 @@ function NavigationLink({
     font-size: 1em;
     border-bottom: 2px solid transparent;
     transition: all 150ms ease-in-out 0ms;
+    padding: 14px;
     &:hover {
       border-bottom: 2px solid ${theme.colors.primary};
     }
@@ -68,8 +142,33 @@ interface HomeProps {
 }
 
 function Home({ theme }: HomeProps) {
+  const steps = [
+    {
+      number: '1',
+      title: 'Create a shiva account',
+      body:
+        'Set basic information like the name of the deceased and the dates of shiva.',
+    },
+    {
+      number: '2',
+      title: 'Add a video chat link',
+      body: 'Use any video conferencing platform, like Zoom or Google Meet .',
+    },
+    {
+      number: '3',
+      title: 'Set visiting hours',
+      body:
+        "Visitors will see your set hours and who's planning to stop by when.",
+    },
+    {
+      number: '4',
+      title: 'Invite people',
+      body:
+        'Send out a link to your shiva. No account creation required to attend.',
+    },
+  ];
+
   const StyledHome = styled.div`
-    height: 75%;
     width: 100%;
     background-image: url(${livingroom});
     background-size: cover;
@@ -94,16 +193,16 @@ function Home({ theme }: HomeProps) {
     <div style={{ width: '100%' }}>
       <StyledHome>
         <div
-          style={{ paddingTop: '72px', letterSpacing: '1px' }}
+          style={{ paddingTop: '60px', letterSpacing: '1px' }}
           className="flex align-center justify-center"
         >
           COMING SOON
         </div>
         <h1
-          style={{ padding: '24px', textAlign: 'center' }}
+          style={{ padding: '14px', textAlign: 'center' }}
           className="flex justify-center"
         >
-          Experience shiva digitally.
+          Organize shiva, online
         </h1>
         <div
           style={{
@@ -114,13 +213,23 @@ function Home({ theme }: HomeProps) {
           }}
           className="flex align-center justify-center"
         >
-          We&apos;re here to help mourners who are unable to have a traditional
-          shiva recreate the experience online.
+          We&apos;re here to help mourners and their extended communities gather
+          together for shiva digitally.
           <br />
         </div>
-        <div className="flex align-center justify-center text-center">
+        <div
+          className="flex align-center justify-center text-center"
+          style={{ paddingBottom: '24px' }}
+        >
           <Button size="big" themeType="secondary" theme={theme}>
-            Send me updates
+            <Link
+              to={{
+                pathname: '/',
+                hash: '#email-updates',
+              }}
+            >
+              Send me updates
+            </Link>
           </Button>
         </div>
       </StyledHome>
@@ -129,7 +238,9 @@ function Home({ theme }: HomeProps) {
           fontSize: '2.5rem',
           paddingTop: '24px',
           backgroundColor: '#f9f4f0',
+          flexDirection: 'column',
         }}
+        className="flex justify-center align-center"
       >
         <h1
           style={{
@@ -142,12 +253,76 @@ function Home({ theme }: HomeProps) {
         >
           How it works
         </h1>
+        <div
+          className="flex"
+          style={{ flexDirection: 'row', justifyContent: 'space-around' }}
+        >
+          {steps.map((step) => (
+            <StepCard
+              width="250px"
+              height="100%"
+              theme={theme}
+              title={step.title}
+              body={step.body}
+              step={step.number}
+            />
+          ))}
+        </div>
+        <div
+          style={{ padding: '24px', display: 'flex', justifyContent: 'center' }}
+        >
+          {/* <Button size="big" theme={theme} themeType="primary">
+            See an example Remote Shiva
+          </Button> */}
+        </div>
+      </div>
+      <div
+        style={{
+          backgroundColor: '#ffffff',
+          display: 'flex',
+          justifyContent: 'center',
+        }}
+      >
+        <div style={{ padding: '48px' }}>
+          <img
+            src={TipsIllustration}
+            alt="two people in front of computers on a video call"
+          />
+        </div>
       </div>
     </div>
   );
 }
 
 export default function Navigation({ theme }: NavigationProps) {
+  const navLinks = [
+    {
+      to: '/how-it-works',
+      className: 'ml-10 inline-flex items-center',
+      content: 'How it works',
+    },
+    {
+      to: '/sample-remote-shiva',
+      className: 'ml-10 inline-flex items-center',
+      content: 'Sample Remote Shiva',
+    },
+    {
+      to: '/resources',
+      className: 'ml-10 inline-flex items-center',
+      content: 'Resources',
+    },
+    {
+      to: '/about-us',
+      className: 'ml-10 inline-flex items-center',
+      content: 'About us',
+    },
+    {
+      to: '/contact',
+      className: 'ml-10 inline-flex items-center',
+      content: 'Contact',
+    },
+  ];
+
   const StyledNav = styled.div`
     position: fixed;
     width: 100%;
@@ -169,42 +344,15 @@ export default function Navigation({ theme }: NavigationProps) {
                   <div className="hidden sm:block lg:block w-auto">logo</div>
                 </div>
               </div>
-              <div className="hidden sm:ml-6 sm:flex sm:items-center">
-                <NavigationLink
-                  theme={theme}
-                  to="/how-it-works"
-                  className="ml-10 inline-flex items-center"
-                >
-                  How it works
-                </NavigationLink>
-                <NavigationLink
-                  theme={theme}
-                  to="/sample-remote-shiva"
-                  className="ml-10 inline-flex items-center"
-                >
-                  Sample Shiva
-                </NavigationLink>
-                <NavigationLink
-                  theme={theme}
-                  to="/resources"
-                  className="ml-10 inline-flex items-center"
-                >
-                  Resources
-                </NavigationLink>
-                <NavigationLink
-                  theme={theme}
-                  to="/about-us"
-                  className="ml-10 inline-flex items-center"
-                >
-                  About us
-                </NavigationLink>
-                <NavigationLink
-                  theme={theme}
-                  to="/contact"
-                  className="ml-10 inline-flex items-center"
-                >
-                  Contact
-                </NavigationLink>
+              <div
+                className="hidden sm:ml-6 sm:flex sm:items-center flex"
+                style={{ justifyContent: 'space-between' }}
+              >
+                {navLinks.map(({ to, content }) => (
+                  <NavigationLink theme={theme} to={to}>
+                    {content}
+                  </NavigationLink>
+                ))}
               </div>
               <div className="-mr-2 flex items-center sm:hidden">
                 <button
