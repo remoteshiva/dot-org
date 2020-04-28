@@ -259,6 +259,7 @@ function Home({ theme }: HomeProps) {
         >
           {steps.map((step) => (
             <StepCard
+              key="step.number"
               width="250px"
               height="100%"
               theme={theme}
