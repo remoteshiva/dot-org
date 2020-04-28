@@ -171,10 +171,10 @@ function Home({ theme }: HomeProps) {
   const StyledHome = styled.div`
     width: 100%;
     background-image: url(${livingroom});
-    background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    background-attachement: fixed;
+    background-size: cover;
+    height: 40vh;
     color: ${theme.text.secondary};
     display: flex;
     flex-direction: column;
@@ -273,7 +273,7 @@ function Home({ theme }: HomeProps) {
           style={{ padding: '24px', display: 'flex', justifyContent: 'center' }}
         >
           {/* <Button size="big" theme={theme} themeType="primary">
-            See an example Remote Shiva
+            See an example RemoteShiva
           </Button> */}
         </div>
       </div>
@@ -328,7 +328,7 @@ function Home({ theme }: HomeProps) {
             maxWidth: '600px',
           }}
         >
-          Remote Shiva is entirely volunteer run. The initiative began as a way
+          RemoteShiva is entirely volunteer run. The initiative began as a way
           to address the unique needs of Jews sitting shiva during the time of
           COVID-19, when people cannot physically gather. We are pluralistic at
           our core, and we’re dedicated to making it as easy as possible for
@@ -401,7 +401,7 @@ export default function Navigation({ theme }: NavigationProps) {
     // {
     //   to: '/sample-remote-shiva',
     //   className: 'ml-10 inline-flex items-center',
-    //   content: 'Sample Remote Shiva',
+    //   content: 'Sample RemoteShiva',
     // },
     {
       to: '/resources',
@@ -498,7 +498,7 @@ export default function Navigation({ theme }: NavigationProps) {
                 href="/.."
                 className="mt-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out sm:pl-5 sm:pr-6"
               >
-                Sample Remote Shiva
+                Sample RemoteShiva
               </a>
               <a
                 href="/"
