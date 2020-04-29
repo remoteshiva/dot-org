@@ -22,6 +22,7 @@ export default {
     port: 3000,
     historyApiFallback: true,
   },
+  devtool: 'eval-source-map',
   entry: path.join(PATHS.src, 'index'),
   output: {
     publicPath: '/',
