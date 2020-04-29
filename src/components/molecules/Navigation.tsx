@@ -20,10 +20,16 @@ interface NavigationLinkProps extends NavLinkProps {
   theme: Theme;
   to: string;
   className?: string;
+  children: JSX.Element;
 }
 
-function NavigationLink({ theme, className, to }: NavigationLinkProps) {
-  const StyledNavLink = styled.div`
+function NavigationLink({
+  theme,
+  className,
+  to,
+  children,
+}: NavigationLinkProps) {
+  const StyledNavLink = styled(NavLink)`
     display: flex;
     align-items: center;
     color: ${theme.text.primary};
@@ -38,8 +44,8 @@ function NavigationLink({ theme, className, to }: NavigationLinkProps) {
 
   return (
     <ThemeProvider theme={theme}>
-      <StyledNavLink>
-        <NavLink to={to} />
+      <StyledNavLink to={to} className={className}>
+        {children}
       </StyledNavLink>
     </ThemeProvider>
   );
