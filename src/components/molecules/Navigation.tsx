@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import {
   BrowserRouter as Router,
@@ -20,7 +20,7 @@ interface NavigationLinkProps extends NavLinkProps {
   theme: Theme;
   to: string;
   className?: string;
-  children: JSX.Element;
+  children: JSX.Element | string;
 }
 
 function NavigationLink({
@@ -67,11 +67,11 @@ function PageContainer({ children }: ContainerProps) {
 
 export default function Navigation({ theme }: NavigationProps) {
   const navLinks = [
-    {
-      to: '/how-it-works',
-      className: 'ml-10 inline-flex itemscenter',
-      content: 'How it works',
-    },
+    // {
+    //   to: '/how-it-works',
+    //   className: 'ml-10 inline-flex itemscenter',
+    //   content: 'How it works',
+    // },
     // {
     //   to: '/sample-remote-shiva',
     //   className: 'ml-10 inline-flex items-center',
@@ -110,7 +110,9 @@ export default function Navigation({ theme }: NavigationProps) {
               <div className="flex">
                 <div className="flex-shrink-0 flex items-center">
                   <div className="block sm:hidden md:hidden lg:hidden w-auto">
-                    MOBILE
+                    <a href="/">
+                      <img src={Logo} alt="RemoteShiva yahrzeit candle logo" />
+                    </a>
                   </div>
                   <div className="hidden sm:block lg:block w-auto">
                     <a href="/">
@@ -243,9 +245,6 @@ export default function Navigation({ theme }: NavigationProps) {
             <PageContainer>
               <About theme={theme} />
             </PageContainer>
-          </Route>
-          <Route path="/dashboard">
-            <h1>LANDING PAGE</h1>
           </Route>
         </Switch>
       </Router>
