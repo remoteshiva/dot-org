@@ -3,6 +3,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import { Theme } from '../../assets/theme';
 
 interface ButtonProps {
+  onClick(): void;
   children: string | JSX.Element;
   className?: string;
   theme: Theme;
@@ -11,6 +12,7 @@ interface ButtonProps {
 }
 
 export default function Button({
+  onClick,
   children,
   className,
   themeType,
@@ -37,7 +39,9 @@ export default function Button({
   return (
     <div>
       <ThemeProvider theme={theme}>
-        <StyledButton className={className}>{children}</StyledButton>
+        <StyledButton onClick={onClick} className={className}>
+          {children}
+        </StyledButton>
       </ThemeProvider>
     </div>
   );
