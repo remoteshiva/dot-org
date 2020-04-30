@@ -72,6 +72,7 @@
   },
   "scripts": {
     "build": "webpack --mode production",
-    "dev": "webpack-dev-server --mode development"
+    "dev": "webpack-dev-server --mode development",
+    "deploy": "func() { node setEnv.js \"$1\" && yarn build && firebase deploy; } && func"
   }
 }
