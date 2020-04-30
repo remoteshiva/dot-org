@@ -14,10 +14,9 @@ interface NavigationLinkProps extends NavLinkProps {
   to: string;
 }
 
-export default function Navigation({ theme }: NavigationProps) {
+export default function About({ theme }: NavigationProps) {
   const Title = styled.div`
     width: 100%;
-    padding-top: 90px;
     font-size: 3.5rem;
     font-family: Lora;
     display: flex;
@@ -46,26 +45,29 @@ export default function Navigation({ theme }: NavigationProps) {
 
   return (
     <ThemeProvider theme={theme}>
-      <Title>
-        About us
-        <div
-          style={{
-            paddingTop: '36px',
-            fontFamily: 'Lato',
-            fontSize: '14px',
-            maxWidth: '500px',
-            lineHeight: '1.5',
-          }}
-        >
-          {PARAGRAPHS.map((paragraph) => (
-            <p key={paragraph.key}>
-              {paragraph.body}
-              <br />
-              <br />
-            </p>
-          ))}
+      <div className="overflow-hidden rounded-lg">
+        <div className="px-4 py-5 sm:p-24">
+          <Title>
+            About Us
+            <div
+              style={{
+                paddingTop: '36px',
+                fontFamily: 'Lato',
+                fontSize: '14px',
+                lineHeight: '1.5',
+              }}
+            >
+              {PARAGRAPHS.map((paragraph) => (
+                <p key={paragraph.key}>
+                  {paragraph.body}
+                  <br />
+                  <br />
+                </p>
+              ))}
+            </div>
+          </Title>
         </div>
-      </Title>
+      </div>
     </ThemeProvider>
   );
 }

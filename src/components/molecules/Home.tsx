@@ -16,12 +16,10 @@ interface StepCardProps {
   title: string;
   body: string;
   step: string;
-  width: string;
   height: string;
 }
 
 function StepCard({
-  width,
   height,
   theme,
   className,
@@ -34,7 +32,6 @@ function StepCard({
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: ${width};
     height: ${height};
     padding: 18px;
     text-align: center;
@@ -120,7 +117,6 @@ export default function Home({ theme }: HomeProps) {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    height: 45vh;
     color: ${theme.text.secondary};
     display: flex;
     flex-direction: column;
@@ -130,6 +126,7 @@ export default function Home({ theme }: HomeProps) {
       font-size: 3rem;
     }
     @media only screen and (max-width: 639px) {
+      font-size: 14px;
       h1 {
         font-size: 2rem;
       }
@@ -324,7 +321,7 @@ export default function Home({ theme }: HomeProps) {
         <h1
           id="#how-it-works"
           style={{
-            padding: '24px',
+            paddingTop: '24px',
             fontSize: '2rem',
             textAlign: 'center',
             backgroundColor: '#f9f4f0',
@@ -337,17 +334,22 @@ export default function Home({ theme }: HomeProps) {
           className="flex"
           style={{ flexDirection: 'row', justifyContent: 'space-around' }}
         >
-          {steps.map((step) => (
-            <StepCard
-              key={step.number}
-              width="250px"
-              height="100%"
-              theme={theme}
-              title={step.title}
-              body={step.body}
-              step={step.number}
-            />
-          ))}
+          <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-4">
+            {steps.map((step) => (
+              <div className="overflow-hidden rounded-lg">
+                <div className="px-4 py-5 sm:p-6">
+                  <StepCard
+                    key={step.number}
+                    height="100%"
+                    theme={theme}
+                    title={step.title}
+                    body={step.body}
+                    step={step.number}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
         <div
           style={{ padding: '24px', display: 'flex', justifyContent: 'center' }}
