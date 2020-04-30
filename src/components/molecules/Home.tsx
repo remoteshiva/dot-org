@@ -95,7 +95,7 @@ export default function Home({ theme }: HomeProps) {
     {
       number: '2',
       title: 'Add a video chat link',
-      body: 'Use any video conferencing platform, like Zoom or Google Meet .',
+      body: 'Use any video conferencing platform, like Zoom or Google Meet.',
     },
     {
       number: '3',
@@ -167,7 +167,7 @@ export default function Home({ theme }: HomeProps) {
               </Overlay>
             </div>
             <div className="z-50 relative bg-white rounded-lg px-4 pt-5 pb-4 overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full sm:p-6">
-              <div className="hidden sm:block absolute top-0 right-0 pt-4 pr-4">
+              <div className="absolute top-0 right-0 pt-4 pr-4">
                 <button
                   type="button"
                   onKeyPress={() => setIsModalOpen(false)}
@@ -360,65 +360,64 @@ export default function Home({ theme }: HomeProps) {
         </div>
       </div>
       <div
-        style={{
-          backgroundColor: '#ffffff',
-          display: 'flex',
-          justifyContent: 'center',
-        }}
+        className="flex"
+        style={{ flexDirection: 'row', justifyContent: 'space-around' }}
       >
-        <div style={{ padding: '60px', maxWidth: '600px' }}>
-          <img
-            src={Tips}
-            alt="two people in front of computers on a video call"
-          />
-        </div>
-        <div
-          style={{
-            padding: '48px',
-            width: '400px',
-            display: 'flex',
-            flexDirection: 'column',
-          }}
-        >
-          <h1 style={{ fontSize: '2rem' }}>Tips for holding a remote shiva</h1>
-          <p
-            style={{
-              color: `${theme.text.tertiary}`,
-              fontSize: '14px',
-              paddingTop: '18px',
-            }}
-          >
-            As part of our design process, we spoke with people who have
-            recently held or participated in virtual shiva gatherings over the
-            past few months. Here’s what we’ve learned has worked best when
-            holding a shiva online.
-          </p>
-          <div
-            style={{
-              paddingBottom: '24px',
-              paddingTop: '12px',
-              justifyContent: 'center',
-              alignItems: 'center',
-              display: 'flex',
-            }}
-          >
-            <Button
-              onClick={() => null}
-              size="big"
-              themeType="primary"
-              theme={theme}
-            >
-              <Link
-                to={{
-                  pathname: '/',
+        <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
+          <div className="overflow-hidden rounded-lg">
+            <div className="px-4 py-5 sm:p-6">
+              <img
+                src={Tips}
+                alt="two people in front of computers on a video call"
+              />
+            </div>
+          </div>
+          <div className="overflow-hidden rounded-lg p-6">
+            <div className="px-4 py-5 sm:p-6">
+              <h1 style={{ fontSize: '2rem' }}>
+                Tips for holding a remote shiva
+              </h1>
+              <p
+                style={{
+                  color: `${theme.text.tertiary}`,
+                  fontSize: '14px',
+                  paddingTop: '18px',
                 }}
               >
-                Coming soon
-              </Link>
-            </Button>
+                As part of our design process, we spoke with people who have
+                recently held or participated in virtual shiva gatherings over
+                the past few months. Here’s what we’ve learned has worked best
+                when holding a shiva online.
+              </p>
+              <div
+                style={{
+                  paddingBottom: '24px',
+                  paddingTop: '12px',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  display: 'flex',
+                }}
+              >
+                <Button
+                  onClick={() => null}
+                  size="big"
+                  themeType="primary"
+                  theme={theme}
+                >
+                  <Link
+                    to={{
+                      pathname: '/',
+                    }}
+                  >
+                    Coming soon
+                  </Link>
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
       <div
         style={{
           display: 'flex',
