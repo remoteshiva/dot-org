@@ -166,7 +166,10 @@ export default function Home({ theme }: HomeProps) {
                 &nbsp;
               </Overlay>
             </div>
-            <div className="z-50 relative bg-white rounded-lg px-4 pt-5 pb-4 overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full sm:p-6">
+            <div
+              style={{ backgroundColor: theme.colors.offWhite }}
+              className="z-50 relative rounded-lg px-4 pt-5 pb-4 overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full sm:p-6"
+            >
               <div className="absolute top-0 right-0 pt-4 pr-4">
                 <button
                   type="button"
