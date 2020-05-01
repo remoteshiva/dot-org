@@ -9,6 +9,7 @@ import { Theme } from '../../assets/theme';
 import Tips from '../../assets/images/illustration-for-tips.png';
 import livingroom from '../../assets/images/livingroom.png';
 import CloseSvg from '../../assets/images/close.svg';
+import * as FirestoreService from '../../services/firestore';
 
 interface StepCardProps {
   theme: Theme;
@@ -85,6 +86,26 @@ interface HomeProps {
 export default function Home({ theme }: HomeProps) {
   const { register, handleSubmit } = useForm();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const onSubmitEarlyAdopter = (values) => {
+    console.log(`onSubmitEarlyAdopter with values ${JSON.stringify(values)}`);
+    const { email, fullName, isRabbiOrLeader } = values;
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    FirestoreService.authenticateAnonymously().then(
+      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
+      FirestoreService.createEarlyAdopter(email, fullName, isRabbiOrLeader)
+        .then((earlyAdopter) => {
+          console.log(`Early adopter created!`);
+        })
+        .catch((error) => {
+          console.error(`Could not create early adopter with error ${error}`);
+        })
+    );
+    // Is this needed?
+    // event.preventDefault();
+  };
+
   const steps = [
     {
       number: '1',
@@ -197,7 +218,10 @@ export default function Home({ theme }: HomeProps) {
                       We’re hard at work getting RemoteShiva ready for release.
                       We’d love to keep you posted about our launch.
                     </p>
-                    <form className="mt-8" onSubmit={() => null}>
+                    <form
+                      className="mt-8"
+                      onSubmit={handleSubmit(onSubmitEarlyAdopter)}
+                    >
                       <input type="hidden" name="remember" value="true" />
                       <div className="rounded-md shadow-sm">
                         <div>
@@ -215,10 +239,11 @@ export default function Home({ theme }: HomeProps) {
                         <div className="-mt-px">
                           <input
                             aria-label="Name"
-                            name="name"
+                            name="fullName"
                             type="text"
                             required
                             className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"
+                            ref={register}
                             placeholder="Name"
                           />
                         </div>
@@ -227,14 +252,14 @@ export default function Home({ theme }: HomeProps) {
                       <div className="mt-6 flex items-center justify-between">
                         <div className="flex items-center">
                           <input
-                            id="rabbi-or-leader"
-                            name="rabbi-or-leader"
+                            id="is-rabbi-or-leader"
+                            name="isRabbiOrLeader"
                             type="checkbox"
                             className="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
-                            onClick={() => null}
+                            ref={register}
                           />
                           <label
-                            htmlFor="rabbi-or-leader"
+                            htmlFor="is-rabbi-or-leader"
                             className="ml-2 block text-sm leading-5 text-gray-900"
                           >
                             I am a rabbi or community leader
@@ -248,7 +273,6 @@ export default function Home({ theme }: HomeProps) {
                           theme={theme}
                           themeType="secondary"
                           className="relative flex transition duration-150 ease-in-out"
-                          onClick={() => null}
                         >
                           Send me updates
                         </Button>
