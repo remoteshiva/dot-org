@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,24 +7,11 @@ import {
   useRouteMatch,
   useParams,
 } from 'react-router-dom';
-import Button from '../components/atoms/Button';
 import Navigation from '../components/molecules/Navigation';
 import { theme } from '../assets/theme';
 
 export default function App() {
-  return <ApplicationShell />;
-}
-
-function ApplicationShell() {
-  return (
-    <div>
-      <Navigation theme={theme} />
-    </div>
-  );
-}
-
-function Content() {
-  return <div>Hello</div>;
+  return <Navigation theme={theme} />;
 }
 
 interface Card {
@@ -44,29 +31,6 @@ function CenteredCard({ content }: Card) {
         </div>
       </div>
     </main>
-  );
-}
-
-function SimpleToggle() {
-  const [isOn, setIsOn] = useState(false);
-  return (
-    <span
-      role="checkbox"
-      aria-checked={isOn}
-      tabIndex={0}
-      onClick={() => setIsOn(!isOn)}
-      onKeyDown={() => setIsOn(!isOn)}
-      className={`${
-        isOn ? 'bg-indigo-600' : 'bg-gray-200'
-      } relative inline-block flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:shadow-outline`}
-    >
-      <span
-        aria-hidden="true"
-        className={`${
-          isOn ? 'translate-x-5' : 'translate-x-0'
-        } inline-block h-5 w-5 rounded-full bg-white shadow transform transition ease-in-out duration-200`}
-      />
-    </span>
   );
 }
 

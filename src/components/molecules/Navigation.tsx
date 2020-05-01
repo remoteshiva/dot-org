@@ -65,6 +65,29 @@ function PageContainer({ children }: ContainerProps) {
   return <Container>{children}</Container>;
 }
 
+function Footer({ theme }) {
+  const PageFooter = styled.div`
+    width: 100%;
+    display: flex;
+    background-color: ${theme.colors.warmGray};
+    color: ${theme.text.secondary};
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-size: 12px;
+    height: 100px;
+  `;
+
+  const today = new Date();
+
+  return (
+    <PageFooter>
+      ©&nbsp;RemoteShiva&nbsp;
+      {today.getFullYear()}
+    </PageFooter>
+  );
+}
+
 export default function Navigation({ theme }: NavigationProps) {
   const navLinks = [
     // {
@@ -237,14 +260,20 @@ export default function Navigation({ theme }: NavigationProps) {
         <br />
         <Switch>
           <Route exact path="/">
-            <PageContainer>
-              <Home theme={theme} />
-            </PageContainer>
+            <>
+              <PageContainer>
+                <Home theme={theme} />
+              </PageContainer>
+              <Footer theme={theme} />
+            </>
           </Route>
           <Route path="/about">
-            <PageContainer>
-              <About theme={theme} />
-            </PageContainer>
+            <>
+              <PageContainer>
+                <About theme={theme} />
+              </PageContainer>
+              <Footer theme={theme} />
+            </>
           </Route>
         </Switch>
       </Router>
