@@ -76,5 +76,8 @@
     "deploy": "func() { node setEnv.js \"$1\" && yarn build && firebase deploy; } && func"
   },
   "private": true,
-  "workspaces": ["functions"]
+  "workspaces": {
+    "packages": ["packages/*"],
+    "nohoist": ["**/functions", "**/functions/**"]
+  }
 }

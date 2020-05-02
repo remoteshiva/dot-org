@@ -20,6 +20,8 @@ Run `yarn deploy dev` or `yarn deploy prod` to deploy to Firebase Hosting
 ### Back end
 * TODO: more detail here
 
+yarn config set ignore-engines true
+
 #### References
 * [Setting up the project](https://dev.to/renatobentorocha/setup-a-react-js-project-with-typescript-eslint-and-prettier-without-create-react-app-l6i)
 * [React & Webpack](https://www.typescriptlang.org/docs/handbook/react-&-webpack.html)
