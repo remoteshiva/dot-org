@@ -10,5 +10,8 @@
   "firestore": {
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
+  },
+  "functions": {
+    "predeploy": "yarn build"
   }
 }
