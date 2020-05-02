@@ -3,8 +3,9 @@
 The web application for `remoteshiva.org`.
 
 ## Quick Start
-1. `npm install -g firebase-tools`
-2. Pull and `yarn install && yarn dev`.
+1. For Firebase support: `npm install -g firebase-tools`
+2. For Firebase function support: `yarn config set ignore-engines true`
+3. Pull and `yarn install && yarn dev`.
 
 ## Deployment
 Run `yarn deploy dev` or `yarn deploy prod` to deploy to Firebase Hosting
@@ -20,7 +21,7 @@ Run `yarn deploy dev` or `yarn deploy prod` to deploy to Firebase Hosting
 ### Back end
 * TODO: more detail here
 
-yarn config set ignore-engines true
+
 
 #### References
 * [Setting up the project](https://dev.to/renatobentorocha/setup-a-react-js-project-with-typescript-eslint-and-prettier-without-create-react-app-l6i)
