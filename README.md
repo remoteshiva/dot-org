@@ -5,6 +5,9 @@ The web application for `remoteshiva.org`.
 ## Quick Start
 1. Pull and `yarn install && yarn dev`.
 
+## Deployment
+Run `yarn deploy dev` or `yarn deploy prod` to deploy to Firebase Hosting
+
 ## Stack
 
 ### Front end
