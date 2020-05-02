@@ -3,7 +3,8 @@
 The web application for `remoteshiva.org`.
 
 ## Quick Start
-1. Pull and `yarn install && yarn dev`.
+1. `npm install -g firebase-tools`
+2. Pull and `yarn install && yarn dev`.
 
 ## Deployment
 Run `yarn deploy dev` or `yarn deploy prod` to deploy to Firebase Hosting
@@ -18,7 +19,6 @@ Run `yarn deploy dev` or `yarn deploy prod` to deploy to Firebase Hosting
 
 ### Back end
 * TODO: more detail here
-
 
 #### References
 * [Setting up the project](https://dev.to/renatobentorocha/setup-a-react-js-project-with-typescript-eslint-and-prettier-without-create-react-app-l6i)
