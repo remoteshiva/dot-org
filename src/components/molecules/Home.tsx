@@ -293,6 +293,7 @@ export default function Home({ theme }: HomeProps) {
 
                       <div className="mt-6 flex justify-center">
                         <Button
+                          onClick={() => null}
                           size="big"
                           theme={theme}
                           themeType="secondary"

@@ -19,12 +19,14 @@ interface NavigationLinkProps extends NavLinkProps {
 function Sample() {
   const ExampleDiv = styled.div`
     background-image: url(${shivaDesktop});
-    width: 80vw;
-    height: 2000px;
+    width: 100vw;
+    height: 1330px;
     background-repeat: no-repeat;
     background-position: center;
     @media only screen and (max-width: 600px) {
       background-image: url(${shivaMobile});
+      width: 80vw;
+      height: 2000px;
     }
   `;
   return <ExampleDiv>&nbsp;</ExampleDiv>;
