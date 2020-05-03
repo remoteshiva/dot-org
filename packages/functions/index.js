@@ -30,22 +30,21 @@ exports.sendEarlyAdopterConfirmation = functions.firestore
     };
     console.log(`onCreate ran with toEmail ${toEmail} and toFullName ${toFullName} and data ${JSON.stringify(data)}`);
     // TODO: This function quits, returning nothing, before the callback runs to mg.messages().send
-    mg.messages()
-      .send(data)
-      .then(() => {
+    mg.messages().send(data, (error, body) => {
+      if (!error) {
         return snap.ref.set(
           {
             earlyAdopterConfirmationStatus: 'sent',
           },
           { merge: true }
         );
-      })
-      .catch((error) => {
-        return snap.ref.set(
-          {
-            earlyAdopterConfirmationStatus: `mailgun error ${error}`,
-          },
-          { merge: true }
-        );
-      });
+      }
+      return snap.ref.set(
+        {
+          earlyAdopterConfirmationStatus: `mailgun error ${error}`,
+        },
+        { merge: true }
+      );
+    });
+    return 0;
   });
