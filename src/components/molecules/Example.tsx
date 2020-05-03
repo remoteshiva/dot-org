@@ -2,6 +2,8 @@ import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { NavLinkProps } from 'react-router-dom';
 import { Theme } from '../../assets/theme';
+import shivaDesktop from '../../assets/images/shiva-desktop-800w.png';
+import shivaMobile from '../../assets/images/shiva-mobile-600w.png';
 
 interface NavigationProps {
   theme: Theme;
@@ -14,7 +16,21 @@ interface NavigationLinkProps extends NavLinkProps {
   to: string;
 }
 
-export default function About({ theme }: NavigationProps) {
+function Sample() {
+  const ExampleDiv = styled.div`
+    background-image: url(${shivaDesktop});
+    width: 80vw;
+    height: 2000px;
+    background-repeat: no-repeat;
+    background-position: center;
+    @media only screen and (max-width: 600px) {
+      background-image: url(${shivaMobile});
+    }
+  `;
+  return <ExampleDiv>&nbsp;</ExampleDiv>;
+}
+
+export default function Example({ theme }: NavigationProps) {
   const Title = styled.div`
     width: 100%;
     font-size: 3.5rem;
@@ -46,27 +62,7 @@ export default function About({ theme }: NavigationProps) {
   return (
     <ThemeProvider theme={theme}>
       <div className="overflow-hidden rounded-lg">
-        <div className="px-4 py-5 sm:p-24">
-          <Title>
-            About Us
-            <div
-              style={{
-                paddingTop: '36px',
-                fontFamily: 'Lato',
-                fontSize: '14px',
-                lineHeight: '1.5',
-              }}
-            >
-              {PARAGRAPHS.map((paragraph) => (
-                <p key={paragraph.key}>
-                  {paragraph.body}
-                  <br />
-                  <br />
-                </p>
-              ))}
-            </div>
-          </Title>
-        </div>
+        <Sample />
       </div>
     </ThemeProvider>
   );

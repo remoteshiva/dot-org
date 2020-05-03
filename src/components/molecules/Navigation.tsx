@@ -99,11 +99,6 @@ export default function Navigation({ theme }: NavigationProps) {
     //   className: 'ml-10 inline-flex itemscenter',
     //   content: 'How it works',
     // },
-    {
-      to: '/example-shiva',
-      className: 'ml-10 inline-flex items-center',
-      content: 'Sample RemoteShiva',
-    },
     // {
     //   to: '/resources',
     //   className: 'ml-10 inline-flex items-center',
@@ -115,9 +110,9 @@ export default function Navigation({ theme }: NavigationProps) {
       content: 'About us',
     },
     {
-      to: '/',
+      to: '/example-shiva',
       className: 'ml-10 inline-flex items-center',
-      content: 'Contact',
+      content: 'Sample RemoteShiva',
     },
   ];
 
