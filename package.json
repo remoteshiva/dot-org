@@ -1,9 +1,9 @@
 {
   "name": "dot-org",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "main": "index.js",
   "repository": "https://github.com/remoteshiva/dot-org.git",
-  "author": "Kristin Ruben <kruben@gmail.com>",
+  "author": "Kristin Ruben <kruben@gmail.com>, Andrew Ash <andrew@emotiveapps.com>",
   "license": "MIT",
   "dependencies": {
     "@babel/cli": "^7.8.4",

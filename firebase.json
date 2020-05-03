@@ -6,5 +6,13 @@
       "**/.*",
       "**/node_modules/**"
     ]
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "functions": {
+    "source": "packages/functions",
+    "predeploy": "yarn build"
   }
 }
