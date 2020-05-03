@@ -19,6 +19,29 @@ interface StepCardProps {
   height: string;
 }
 
+function Footer({ theme }) {
+  const PageFooter = styled.div`
+    width: 100%;
+    display: flex;
+    background-color: ${theme.colors.warmGray};
+    color: ${theme.text.secondary};
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-size: 12px;
+    height: 100px;
+  `;
+
+  const today = new Date();
+
+  return (
+    <PageFooter>
+      ©&nbsp;RemoteShiva&nbsp;
+      {today.getFullYear()}
+    </PageFooter>
+  );
+}
+
 function StepCard({
   height,
   theme,
@@ -505,6 +528,7 @@ export default function Home({ theme }: HomeProps) {
         >
           <p>We&apos;d love to hear from you.</p>
         </div>
+        <Footer theme={theme} />
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import {
   Switch,
 } from 'react-router-dom';
 import About from './About';
+import Example from './Example';
 import { Theme } from '../../assets/theme';
 import Logo from '../../assets/images/logo.svg';
 import Home from './Home';
@@ -67,6 +68,9 @@ function PageContainer({ children }: ContainerProps) {
 
 function Footer({ theme }) {
   const PageFooter = styled.div`
+    position: fixed;
+    left: 0;
+    bottom: 0;
     width: 100%;
     display: flex;
     background-color: ${theme.colors.warmGray};
@@ -75,7 +79,7 @@ function Footer({ theme }) {
     text-align: center;
     align-items: center;
     font-size: 12px;
-    height: 100px;
+    height: 50px;
   `;
 
   const today = new Date();
@@ -95,11 +99,11 @@ export default function Navigation({ theme }: NavigationProps) {
     //   className: 'ml-10 inline-flex itemscenter',
     //   content: 'How it works',
     // },
-    // {
-    //   to: '/sample-remote-shiva',
-    //   className: 'ml-10 inline-flex items-center',
-    //   content: 'Sample RemoteShiva',
-    // },
+    {
+      to: '/example-shiva',
+      className: 'ml-10 inline-flex items-center',
+      content: 'Sample RemoteShiva',
+    },
     // {
     //   to: '/resources',
     //   className: 'ml-10 inline-flex items-center',
@@ -260,20 +264,23 @@ export default function Navigation({ theme }: NavigationProps) {
         <br />
         <Switch>
           <Route exact path="/">
-            <>
-              <PageContainer>
-                <Home theme={theme} />
-              </PageContainer>
-              <Footer theme={theme} />
-            </>
+            <PageContainer>
+              <Home theme={theme} />
+            </PageContainer>
           </Route>
           <Route path="/about">
             <>
               <PageContainer>
-                <About theme={theme} />
+                <>
+                  <About theme={theme} />
+                </>
               </PageContainer>
-              <Footer theme={theme} />
             </>
+          </Route>
+          <Route path="/example-shiva">
+            <PageContainer>
+              <Example theme={theme} />
+            </PageContainer>
           </Route>
         </Switch>
       </Router>
