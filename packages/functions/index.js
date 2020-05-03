@@ -48,5 +48,4 @@ exports.sendEarlyAdopterConfirmation = functions.firestore
           { merge: true }
         );
       });
-    });
   });
