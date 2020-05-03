@@ -96,10 +96,11 @@ export default function Home({ theme }: HomeProps) {
       // @ts-ignore
       FirestoreService.createEarlyAdopter(email, fullName, isRabbiOrLeader)
         .then((earlyAdopter) => {
-          console.log(`Early adopter created!`);
+          alert(`Thank you for signing up`);
+          setIsModalOpen(false);
         })
         .catch((error) => {
-          console.error(`Could not create early adopter with error ${error}`);
+          alert(`We could not sign you up. Please try again`);
         })
     );
     // Is this needed?
