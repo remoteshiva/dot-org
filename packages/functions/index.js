@@ -20,31 +20,52 @@ exports.sendEarlyAdopterConfirmation = functions.firestore
     const toEmail = context.params.email;
     const toFullName = doc.fullName;
 
-    // Mailgun Documentation: https://documentation.mailgun.com/en/latest/user_manual.html#templates
-    const data = {
-      from: 'RemoteShiva <info@remoteshiva.org>',
-      to: toEmail,
-      subject: 'Thank you from RemoteShiva',
-      template: 'send_early_adopter_confirmation',
-      'h:X-Mailgun-Variables': `{"fullName": "${toFullName}", "email": "${toEmail}"}`,
-    };
-    console.log(`onCreate ran with toEmail ${toEmail} and toFullName ${toFullName} and data ${JSON.stringify(data)}`);
-    // TODO: This function quits, returning nothing, before the callback runs to mg.messages().send
-    mg.messages().send(data, (error, body) => {
-      if (!error) {
+    const sendConfirmationEmail = (resultOfAddingToMailingList) => {
+      // Mailgun Documentation: https://documentation.mailgun.com/en/latest/user_manual.html#templates
+      const data = {
+        from: 'RemoteShiva <info@remoteshiva.org>',
+        to: toEmail,
+        subject: 'Thank you from RemoteShiva',
+        template: 'send_early_adopter_confirmation',
+        'h:X-Mailgun-Variables': `{"fullName": "${toFullName}", "email": "${toEmail}"}`,
+      };
+      console.log(`onCreate ran with toEmail ${toEmail} and toFullName ${toFullName} and data ${JSON.stringify(data)}`);
+      // TODO: This function quits, returning nothing, before the callback runs to mg.messages().send
+      mg.messages().send(data, (error, body) => {
+        if (!error) {
+          return snap.ref.set(
+            {
+              earlyAdopterConfirmationStatus: 'sent',
+              addedToMailingListStatus: resultOfAddingToMailingList,
+            },
+            { merge: true }
+          );
+        }
         return snap.ref.set(
           {
-            earlyAdopterConfirmationStatus: 'sent',
+            earlyAdopterConfirmationStatus: `mailgun error ${error}`,
+            addedToMailingListStatus: resultOfAddingToMailingList,
           },
           { merge: true }
         );
+      });
+    };
+
+    // 1 - Add user to mailing list for future use
+    const list = mg.lists(`earlyadopters@${domain}`);
+    const newMember = {
+      subscribed: true,
+      address: toEmail,
+      name: toFullName,
+      vars: { isRabbiOrLeader: doc.isRabbiOrLeader },
+    };
+    list.members().create(newMember, (error, data) => {
+      // 2 - Send confirmation email to user
+      if (!error) {
+        return sendConfirmationEmail(true);
+      } else {
+        return sendConfirmationEmail(false);
       }
-      return snap.ref.set(
-        {
-          earlyAdopterConfirmationStatus: `mailgun error ${error}`,
-        },
-        { merge: true }
-      );
     });
     return 0;
   });
