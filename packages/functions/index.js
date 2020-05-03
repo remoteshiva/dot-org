@@ -16,7 +16,6 @@ const mg = require('mailgun-js')({
 exports.sendEarlyAdopterConfirmation = functions.firestore
   .document('earlyadopters/{email}')
   .onCreate((snap, context) => {
-    console.log(`API key is ${process.env.MAILGUN_API_KEY}`);
     const doc = snap.data();
     const toEmail = context.params.email;
     const toFullName = doc.fullName;
@@ -49,4 +48,5 @@ exports.sendEarlyAdopterConfirmation = functions.firestore
           { merge: true }
         );
       });
+    });
   });
