@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "remoteshiva-dev"
+    "dev": "remoteshiva-dev",
+    "prod": "remoteshiva-4b120"
   }
 }
