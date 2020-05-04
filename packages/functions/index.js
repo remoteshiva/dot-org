@@ -1,9 +1,11 @@
 const functions = require('firebase-functions');
+
 const domain = 'mg.remoteshiva.org';
 const mg = require('mailgun-js')({
   apiKey: functions.config().mailgun.key,
   domain,
 });
+const axios = require('axios');
 
 // Create and Deploy Your First Cloud Functions
 // https://firebase.google.com/docs/functions/write-firebase-functions
@@ -20,6 +22,26 @@ exports.sendEarlyAdopterConfirmation = functions.firestore
     const toEmail = context.params.email;
     const toFullName = doc.fullName;
 
+    const notifySlack = (name, email, isRabbiOrLeader) => {
+      let text = `${name} subscribed for updates (${email})`;
+      if (isRabbiOrLeader) {
+        text = `${text} (Rabbi or Leader)`;
+      }
+      axios
+        .post(
+          'https://hooks.slack.com/services/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',
+          {
+            text: text,
+          }
+        )
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    };
+
     const sendConfirmationEmail = (resultOfAddingToMailingList) => {
       // Mailgun Documentation: https://documentation.mailgun.com/en/latest/user_manual.html#templates
       const data = {
@@ -29,10 +51,10 @@ exports.sendEarlyAdopterConfirmation = functions.firestore
         template: 'send_early_adopter_confirmation',
         'h:X-Mailgun-Variables': `{"fullName": "${toFullName}", "email": "${toEmail}"}`,
       };
-      console.log(`onCreate ran with toEmail ${toEmail} and toFullName ${toFullName} and data ${JSON.stringify(data)}`);
       // TODO: This function quits, returning nothing, before the callback runs to mg.messages().send
       mg.messages().send(data, (error, body) => {
         if (!error) {
+          notifySlack(toFullName, toEmail, doc.isRabbiOrLeader);
           return snap.ref.set(
             {
               earlyAdopterConfirmationStatus: 'sent',
@@ -63,9 +85,8 @@ exports.sendEarlyAdopterConfirmation = functions.firestore
       // 2 - Send confirmation email to user
       if (!error) {
         return sendConfirmationEmail(true);
-      } else {
-        return sendConfirmationEmail(false);
       }
+      return sendConfirmationEmail(false);
     });
     return 0;
   });
