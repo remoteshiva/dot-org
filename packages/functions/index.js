@@ -28,12 +28,9 @@ exports.sendEarlyAdopterConfirmation = functions.firestore
         text = `${text} (Rabbi or Leader)`;
       }
       axios
-        .post(
-          'https://hooks.slack.com/services/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',
-          {
-            text: text,
-          }
-        )
+        .post(functions.config().slack.key, {
+          text,
+        })
         .then(function (response) {
           console.log(response);
         })
