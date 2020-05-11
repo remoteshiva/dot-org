@@ -2,17 +2,17 @@ import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import {
   BrowserRouter as Router,
-  Link,
   NavLink,
   NavLinkProps,
   Route,
   Switch,
 } from 'react-router-dom';
-import Button from '../atoms/Button';
+import About from './About';
+import Example from './Example';
+import TipsPage from './TipsPage';
 import { Theme } from '../../assets/theme';
-import Tips from '../../assets/images/illustration-for-tips.svg';
-import livingroom from '../../assets/images/livingroom.png';
 import Logo from '../../assets/images/logo.svg';
+import Home from './Home';
 
 interface NavigationProps {
   theme: Theme;
@@ -20,87 +20,16 @@ interface NavigationProps {
 
 interface NavigationLinkProps extends NavLinkProps {
   theme: Theme;
-  className?: string;
-  children: string;
   to: string;
-}
-
-interface StepCardProps {
-  theme: Theme;
   className?: string;
-  title: string;
-  body: string;
-  step: string;
-  width: string;
-  height: string;
-}
-
-function StepCard({
-  width,
-  height,
-  theme,
-  className,
-  title,
-  body,
-  step,
-}: StepCardProps) {
-  const StyledCard = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    width: ${width};
-    height: ${height};
-    padding: 18px;
-    text-align: center;
-  `;
-
-  const StepBubble = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    color: ${theme.colors.primary};
-    background-color: ${theme.colors.tertiary};
-    width: 36px;
-    height: 36px;
-    border-radius: 100%;
-    font-family: Lato;
-    padding: 18px;
-  `;
-
-  const Title = styled.h1`
-    display: flex;
-    font-size: 18px;
-    color: ${theme.text.primary};
-    padding-top: 18px;
-    min-height: 48px;
-    max-height: 140px;
-  `;
-
-  const Body = styled.p`
-    display: flex;
-    font-size: 16px;
-    font-family: Lato;
-    color: ${theme.text.tertiary};
-    padding-top: 14px;
-    padding-bottom: 14px;
-  `;
-
-  return (
-    <StyledCard width={width} height={height} className={className}>
-      <StepBubble>{step}</StepBubble>
-      <Title>{title}</Title>
-      <Body>{body}</Body>
-    </StyledCard>
-  );
+  children: JSX.Element | string;
 }
 
 function NavigationLink({
-  to,
   theme,
-  children,
   className,
+  to,
+  children,
 }: NavigationLinkProps) {
   const StyledNavLink = styled(NavLink)`
     display: flex;
@@ -138,292 +67,38 @@ function PageContainer({ children }: ContainerProps) {
   return <Container>{children}</Container>;
 }
 
-interface HomeProps {
-  theme: Theme;
-}
-
-function Home({ theme }: HomeProps) {
-  const steps = [
-    {
-      number: '1',
-      title: 'Create a shiva account',
-      body:
-        'Set basic information like the name of the deceased and the dates of shiva.',
-    },
-    {
-      number: '2',
-      title: 'Add a video chat link',
-      body: 'Use any video conferencing platform, like Zoom or Google Meet .',
-    },
-    {
-      number: '3',
-      title: 'Set visiting hours',
-      body:
-        "Visitors will see your set hours and who's planning to stop by when.",
-    },
-    {
-      number: '4',
-      title: 'Invite people',
-      body:
-        'Send out a link to your shiva. No account creation required to attend.',
-    },
-  ];
-
-  const StyledHome = styled.div`
+function NarrowContainer({ children }: ContainerProps) {
+  const Container = styled.div`
     width: 100%;
-    background-image: url(${livingroom});
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    height: 40vh;
-    color: ${theme.text.secondary};
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    text-overflow: nowrap;
-    h1 {
-      font-size: 3rem;
-    }
-    @media only screen and (max-width: 639px) {
-      h1 {
-        font-size: 2rem;
-      }
-    }
   `;
-  return (
-    <div style={{ width: '100%' }}>
-      <StyledHome>
-        <div
-          style={{ fontSize: '16px', paddingTop: '60px', letterSpacing: '1px' }}
-          className="flex align-center justify-center"
-        >
-          COMING SOON
-        </div>
-        <h1
-          style={{ padding: '14px', textAlign: 'center' }}
-          className="flex justify-center"
-        >
-          Be together for shiva, online
-        </h1>
-        <div
-          style={{
-            width: '60%',
-            fontSize: '1.25rem',
-            lineHeight: 1.38,
-            textAlign: 'center',
-          }}
-          className="flex align-center justify-center"
-        >
-          We&apos;re here to help mourners who aren’t able to have a traditional
-          in-person shiva to recreate this experience as best as possible
-          online.
-          <br />
-        </div>
-        <div
-          className="flex align-center justify-center text-center"
-          style={{ paddingBottom: '24px' }}
-        >
-          <Button size="big" themeType="secondary" theme={theme}>
-            <Link
-              to={{
-                pathname: '/',
-                hash: '#email-updates',
-              }}
-            >
-              Send me updates
-            </Link>
-          </Button>
-        </div>
-      </StyledHome>
-      <div
-        style={{
-          fontSize: '2.5rem',
-          paddingTop: '24px',
-          backgroundColor: '#f9f4f0',
-          flexDirection: 'column',
-        }}
-        className="flex justify-center align-center"
-      >
-        <h1
-          style={{
-            padding: '24px',
-            fontSize: '2rem',
-            textAlign: 'center',
-            backgroundColor: '#f9f4f0',
-          }}
-          className="flex justify-center"
-        >
-          How it works
-        </h1>
-        <div
-          className="flex"
-          style={{ flexDirection: 'row', justifyContent: 'space-around' }}
-        >
-          {steps.map((step) => (
-            <StepCard
-              key={step.number}
-              width="250px"
-              height="100%"
-              theme={theme}
-              title={step.title}
-              body={step.body}
-              step={step.number}
-            />
-          ))}
-        </div>
-        <div
-          style={{ padding: '24px', display: 'flex', justifyContent: 'center' }}
-        >
-          {/* <Button size="big" theme={theme} themeType="primary">
-            See an example RemoteShiva
-          </Button> */}
-        </div>
-      </div>
-      <div
-        style={{
-          backgroundColor: '#ffffff',
-          display: 'flex',
-          justifyContent: 'center',
-        }}
-      >
-        <div style={{ padding: '60px' }}>
-          <img
-            src={Tips}
-            alt="two people in front of computers on a video call"
-          />
-        </div>
-        <div
-          style={{
-            padding: '48px',
-            width: '400px',
-            display: 'flex',
-            flexDirection: 'column',
-          }}
-        >
-          <h1 style={{ fontSize: '2rem' }}>Tips for holding a remote shiva</h1>
-          <p
-            style={{
-              color: `${theme.text.tertiary}`,
-              fontSize: '14px',
-              paddingTop: '18px',
-            }}
-          >
-            As part of our design process, we talked to people that have
-            recently held or participated in virtual shiva gatherings over the
-            past few months. Here’s what we’ve learned has worked best when
-            holding a shiva online.
-          </p>
-          <div
-            style={{
-              paddingBottom: '24px',
-              paddingTop: '12px',
-              justifyContent: 'center',
-              alignItems: 'center',
-              display: 'flex',
-            }}
-          >
-            <Button size="big" themeType="primary" theme={theme}>
-              <Link
-                to={{
-                  pathname: '/about',
-                }}
-              >
-                Learn more
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </div>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          backgroundColor: '#fdfaf9',
-          padding: '60px',
-          width: '100%',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
-        <h1 style={{ fontSize: '2rem' }}>About us</h1>
-        <p
-          style={{
-            color: `${theme.text.tertiary}`,
-            fontSize: '14px',
-            paddingTop: '18px',
-            paddingBottom: '18px',
-            textAlign: 'center',
-            maxWidth: '600px',
-          }}
-        >
-          RemoteShiva is entirely volunteer run. The initiative began as a way
-          to address the unique needs of Jews sitting shiva during the time of
-          COVID-19, when people cannot physically gather. We are pluralistic at
-          our core, and we’re dedicated to making it as easy as possible for
-          anyone to have a shiva remotely.
-        </p>
-      </div>
-      <div
-        style={{
-          fontSize: '2.5rem',
-          paddingTop: '24px',
-          backgroundColor: '#f4ede7',
-          flexDirection: 'column',
-        }}
-        className="flex justify-center align-center"
-      >
-        <h1
-          style={{
-            padding: '24px',
-            fontSize: '2rem',
-            textAlign: 'center',
-          }}
-          className="flex justify-center"
-        >
-          Get in touch
-        </h1>
-        <div
-          style={{
-            paddingBottom: '24px',
-            display: 'flex',
-            justifyContent: 'center',
-            color: `${theme.text.primary}`,
-            fontSize: '16px',
-          }}
-        >
-          <p>We&apos;d love to hear from you.</p>
-        </div>
-      </div>
-    </div>
-  );
+
+  return <Container>{children}</Container>;
 }
 
 export default function Navigation({ theme }: NavigationProps) {
   const navLinks = [
-    {
-      to: '/how-it-works',
-      className: 'ml-10 inline-flex items-center',
-      content: 'How it works',
-    },
     // {
-    //   to: '/sample-remote-shiva',
-    //   className: 'ml-10 inline-flex items-center',
-    //   content: 'Sample RemoteShiva',
+    //   to: '/how-it-works',
+    //   className: 'ml-10 inline-flex itemscenter',
+    //   content: 'How it works',
     // },
     {
-      to: '/resources',
-      className: 'ml-10 inline-flex items-center',
-      content: 'Resources',
-    },
-    {
-      to: '/about-us',
+      to: '/about',
       className: 'ml-10 inline-flex items-center',
       content: 'About us',
     },
     {
-      to: '/contact',
+      to: '/tips',
       className: 'ml-10 inline-flex items-center',
-      content: 'Contact',
+      content: 'Tips',
+    },
+    {
+      to: '/example-shiva',
+      className: 'ml-10 inline-flex items-center',
+      content: 'Sample RemoteShiva',
     },
   ];
 
@@ -443,10 +118,14 @@ export default function Navigation({ theme }: NavigationProps) {
               <div className="flex">
                 <div className="flex-shrink-0 flex items-center">
                   <div className="block sm:hidden md:hidden lg:hidden w-auto">
-                    MOBILE
+                    <a href="/">
+                      <img src={Logo} alt="RemoteShiva yahrzeit candle logo" />
+                    </a>
                   </div>
                   <div className="hidden sm:block lg:block w-auto">
-                    <img src={Logo} alt="RemoteShiva yahrzeit candle logo" />
+                    <a href="/">
+                      <img src={Logo} alt="RemoteShiva yahrzeit candle logo" />
+                    </a>
                   </div>
                 </div>
               </div>
@@ -455,7 +134,7 @@ export default function Navigation({ theme }: NavigationProps) {
                 style={{ justifyContent: 'space-between' }}
               >
                 {navLinks.map(({ to, content }) => (
-                  <NavigationLink theme={theme} to={to}>
+                  <NavigationLink key={to} theme={theme} to={to}>
                     {content}
                   </NavigationLink>
                 ))}
@@ -571,10 +250,19 @@ export default function Navigation({ theme }: NavigationProps) {
             </PageContainer>
           </Route>
           <Route path="/about">
-            <h1>about</h1>
+            <NarrowContainer>
+              <About theme={theme} />
+            </NarrowContainer>
           </Route>
-          <Route path="/dashboard">
-            <h1>LANDING PAGE</h1>
+          <Route path="/example-shiva">
+            <PageContainer>
+              <Example theme={theme} />
+            </PageContainer>
+          </Route>
+          <Route path="/tips">
+            <NarrowContainer>
+              <TipsPage theme={theme} />
+            </NarrowContainer>
           </Route>
         </Switch>
       </Router>

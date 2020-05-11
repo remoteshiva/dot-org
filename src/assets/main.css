@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap');
 
+html {
+  background-color: '#41413a';
+}
 
 body {
  font-family: 'Lato', sans-serif;  
