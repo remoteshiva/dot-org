@@ -66,30 +66,15 @@ function PageContainer({ children }: ContainerProps) {
   return <Container>{children}</Container>;
 }
 
-function Footer({ theme }) {
-  const PageFooter = styled.div`
-    position: fixed;
-    left: 0;
-    bottom: 0;
+function NarrowContainer({ children }: ContainerProps) {
+  const Container = styled.div`
     width: 100%;
     display: flex;
-    background-color: ${theme.colors.warmGray};
-    color: ${theme.text.secondary};
     justify-content: center;
-    text-align: center;
     align-items: center;
-    font-size: 12px;
-    height: 50px;
   `;
 
-  const today = new Date();
-
-  return (
-    <PageFooter>
-      ©&nbsp;RemoteShiva&nbsp;
-      {today.getFullYear()}
-    </PageFooter>
-  );
+  return <Container>{children}</Container>;
 }
 
 export default function Navigation({ theme }: NavigationProps) {
@@ -264,13 +249,9 @@ export default function Navigation({ theme }: NavigationProps) {
             </PageContainer>
           </Route>
           <Route path="/about">
-            <>
-              <PageContainer>
-                <>
-                  <About theme={theme} />
-                </>
-              </PageContainer>
-            </>
+            <NarrowContainer>
+              <About theme={theme} />
+            </NarrowContainer>
           </Route>
           <Route path="/example-shiva">
             <PageContainer>

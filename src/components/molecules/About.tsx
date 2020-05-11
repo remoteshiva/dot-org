@@ -1,25 +1,19 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import { NavLinkProps } from 'react-router-dom';
 import { Theme } from '../../assets/theme';
 
 interface NavigationProps {
   theme: Theme;
 }
 
-interface NavigationLinkProps extends NavLinkProps {
-  theme: Theme;
-  className?: string;
-  children: string;
-  to: string;
-}
-
 export default function About({ theme }: NavigationProps) {
   const Title = styled.div`
-    width: 100%;
+    padding-top: 72px;
+    width: 500px;
     font-size: 3.5rem;
     font-family: Lora;
     display: flex;
+    justify-self: center;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -46,7 +40,7 @@ export default function About({ theme }: NavigationProps) {
   return (
     <ThemeProvider theme={theme}>
       <div className="overflow-hidden rounded-lg">
-        <div className="px-4 py-5 sm:p-24">
+        <div className="px-4 py-5" style={{ maxWidth: '500px' }}>
           <Title>
             About Us
             <div

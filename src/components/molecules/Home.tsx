@@ -1,15 +1,19 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Portal } from 'react-portal';
 import { useForm } from 'react-hook-form';
-import Button from '../atoms/Button';
+import { Portal } from 'react-portal';
+import styled from 'styled-components';
 import { Theme } from '../../assets/theme';
-import Tips from '../../assets/images/illustration-for-tips.png';
-import livingroom from '../../assets/images/livingroom.png';
-import CloseSvg from '../../assets/images/close.svg';
 import * as FirestoreService from '../../services/firestore';
+import Button from '../atoms/Button';
+import CloseSvg from '../../assets/images/close.svg';
+/* Banner vector created by upklyak - www.freepik.com */
+import livingroom from '../../assets/images/livingroom.png';
+/* Camera vector created by sentavio - www.freepik.com */
+import Tips from '../../assets/images/illustration-for-tips.png';
+/* Icons made by https://www.flaticon.com/authors/dave-gandy" */
+import github from '../../assets/images/github-logo.svg';
 
 interface StepCardProps {
   theme: Theme;
@@ -24,10 +28,11 @@ function Footer({ theme }) {
   const PageFooter = styled.div`
     width: 100%;
     display: flex;
+    flex-direction: column;
     background-color: ${theme.colors.warmGray};
     color: ${theme.text.secondary};
-    justify-content: center;
     text-align: center;
+    justify-content: center;
     align-items: center;
     font-size: 12px;
     height: 100px;
@@ -37,8 +42,52 @@ function Footer({ theme }) {
 
   return (
     <PageFooter>
-      ©&nbsp;RemoteShiva&nbsp;
-      {today.getFullYear()}
+      <div className="flex justify-center" style={{ width: '100px' }}>
+        {/* GITHUB */}
+        <a href="https://github.com/remoteshiva/dot-org">
+          <svg
+            width="70%"
+            height="70%"
+            fill="#ffffff"
+            viewBox="0 0 136 133"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g transform="matrix(1,0,0,1,-317.926,-179.59)">
+              <g transform="matrix(4.16667,0,0,4.16667,385.792,312.523)">
+                <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.778 -11.354,-8.279 -11.354,-8.279C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.154 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.237C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.839 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.839 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" />
+              </g>
+            </g>
+          </svg>
+        </a>
+        {/* FACEBOOK */}
+        <a
+          href="https://www.facebook.com/remoteshiva"
+          style={{ marginTop: '-10px' }}
+        >
+          <svg
+            height="100%"
+            width="100%"
+            clipRule="evenodd"
+            fillRule="evenodd"
+            viewBox="0 0 560 400"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="m410.096 200.048c0-71.818-58.23-130.048-130.048-130.048s-130.048 58.23-130.048 130.048c0 64.905 47.55 118.709 109.73 128.476v-90.875h-33.029v-37.601h33.029v-28.658c0-32.59 19.422-50.604 49.122-50.604 14.228 0 29.115 2.542 29.115 2.542v32.005h-16.405c-16.148 0-21.196 10.022-21.196 20.318v24.396h36.064l-5.761 37.601h-30.304v90.875c62.18-9.749 109.73-63.553 109.73-128.476z"
+              fill="#ffffff"
+            />
+            <path
+              fill="transparent"
+              d="m330.67 237.648 5.761-37.601h-36.064v-24.396c0-10.278 5.029-20.318 21.196-20.318h16.405v-32.005s-14.886-2.542-29.115-2.542c-29.7 0-49.122 17.996-49.122 50.604v28.658h-33.029v37.601h33.029v90.875c6.62 1.041 13.405 1.572 20.318 1.572s13.698-.549 20.318-1.572v-90.875h30.304z"
+            />
+          </svg>
+        </a>
+      </div>
+      <div>
+        ©&nbsp;RemoteShiva&nbsp;
+        {today.getFullYear()}
+      </div>
     </PageFooter>
   );
 }
@@ -57,7 +106,8 @@ function StepCard({
     justify-content: space-around;
     align-items: center;
     height: ${height};
-    padding: 18px;
+    padding-left: 18px;
+    padding-right: 18px;
     text-align: center;
   `;
 
@@ -106,11 +156,16 @@ interface HomeProps {
   theme: Theme;
 }
 
+interface EarlyAdopter {
+  email: string;
+  fullName: string;
+  isRabbiOrLeader: boolean;
+}
+
 export default function Home({ theme }: HomeProps) {
   const { register, handleSubmit } = useForm();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const onSubmitEarlyAdopter = (values) => {
-    console.log(`onSubmitEarlyAdopter with values ${JSON.stringify(values)}`);
+  const onSubmitEarlyAdopter = (values: EarlyAdopter) => {
     const { email, fullName, isRabbiOrLeader } = values;
     // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore
@@ -126,8 +181,6 @@ export default function Home({ theme }: HomeProps) {
           alert(`We could not sign you up. Please try again`);
         })
     );
-    // Is this needed?
-    // event.preventDefault();
   };
 
   const steps = [
@@ -389,7 +442,7 @@ export default function Home({ theme }: HomeProps) {
           <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-4">
             {steps.map((step) => (
               <div className="overflow-hidden rounded-lg">
-                <div className="px-4 py-5 sm:p-6">
+                <div className="px-4 py-5">
                   <StepCard
                     key={step.number}
                     height="100%"
