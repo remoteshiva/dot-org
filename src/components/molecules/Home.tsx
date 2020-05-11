@@ -385,9 +385,8 @@ export default function Home({ theme }: HomeProps) {
           }}
           className="flex align-center justify-center"
         >
-          We&apos;re here to help mourners who aren’t able to have a traditional
-          in-person shiva to recreate this experience as best as possible
-          online.
+          We&apos;re here to help mourners and their extended communities gather
+          together for shiva digitally
           <br />
         </div>
         <div
