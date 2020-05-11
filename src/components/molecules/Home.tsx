@@ -12,8 +12,6 @@ import CloseSvg from '../../assets/images/close.svg';
 import livingroom from '../../assets/images/livingroom.png';
 /* Camera vector created by sentavio - www.freepik.com */
 import Tips from '../../assets/images/illustration-for-tips.png';
-/* Icons made by https://www.flaticon.com/authors/dave-gandy" */
-import github from '../../assets/images/github-logo.svg';
 
 interface StepCardProps {
   theme: Theme;
