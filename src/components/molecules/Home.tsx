@@ -295,7 +295,7 @@ export default function Home({ theme }: HomeProps) {
                     </p>
                     <form
                       className="mt-8"
-                      onSubmit={handleSubmit(onSubmitEarlyAdopter)}
+                      onSubmit={handleSubmit(onSubmitEarlyAdopter)} // TODO: fix type error
                     >
                       <input type="hidden" name="remember" value="true" />
                       <div className="rounded-md shadow-sm">
@@ -509,10 +509,10 @@ export default function Home({ theme }: HomeProps) {
                 >
                   <Link
                     to={{
-                      pathname: '/',
+                      pathname: '/tips',
                     }}
                   >
-                    Coming soon
+                    Shiva tips
                   </Link>
                 </Button>
               </div>

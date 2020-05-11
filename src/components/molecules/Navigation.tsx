@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom';
 import About from './About';
 import Example from './Example';
+import TipsPage from './TipsPage';
 import { Theme } from '../../assets/theme';
 import Logo from '../../assets/images/logo.svg';
 import Home from './Home';
@@ -257,6 +258,11 @@ export default function Navigation({ theme }: NavigationProps) {
             <PageContainer>
               <Example theme={theme} />
             </PageContainer>
+          </Route>
+          <Route path="/tips">
+            <NarrowContainer>
+              <TipsPage theme={theme} />
+            </NarrowContainer>
           </Route>
         </Switch>
       </Router>
