@@ -85,15 +85,15 @@ export default function Navigation({ theme }: NavigationProps) {
     //   className: 'ml-10 inline-flex itemscenter',
     //   content: 'How it works',
     // },
-    // {
-    //   to: '/resources',
-    //   className: 'ml-10 inline-flex items-center',
-    //   content: 'Resources',
-    // },
     {
       to: '/about',
       className: 'ml-10 inline-flex items-center',
       content: 'About us',
+    },
+    {
+      to: '/tips',
+      className: 'ml-10 inline-flex items-center',
+      content: 'Tips',
     },
     {
       to: '/example-shiva',
