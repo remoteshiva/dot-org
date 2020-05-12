@@ -264,6 +264,11 @@ export default function Navigation({ theme }: NavigationProps) {
               <TipsPage theme={theme} />
             </NarrowContainer>
           </Route>
+          <Route path="*">
+            <NarrowContainer>
+              <h1>Page not found</h1>
+            </NarrowContainer>
+          </Route>
         </Switch>
       </Router>
     </ThemeProvider>
