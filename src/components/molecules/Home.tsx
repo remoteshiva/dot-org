@@ -176,7 +176,8 @@ export default function Home({ theme }: HomeProps) {
           setIsModalOpen(false);
         })
         .catch((error) => {
-          alert(`We could not sign you up. Please try again`);
+          alert(`We could not sign you up. Please try again.`);
+          console.log(`Error returned by createEarlyAdopter: ${error}`);
         })
     );
   };
