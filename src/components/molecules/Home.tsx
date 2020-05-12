@@ -161,7 +161,7 @@ interface EarlyAdopter {
 }
 
 export default function Home({ theme }: HomeProps) {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, errors } = useForm();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const onSubmitEarlyAdopter = (values: EarlyAdopter) => {
     const { email, fullName, isRabbiOrLeader } = values;
