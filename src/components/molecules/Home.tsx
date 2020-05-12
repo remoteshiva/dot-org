@@ -295,7 +295,7 @@ export default function Home({ theme }: HomeProps) {
                     </p>
                     <form
                       className="mt-8"
-                      onSubmit={handleSubmit(onSubmitEarlyAdopter)} // TODO: fix type error
+                      onSubmit={handleSubmit(onSubmitEarlyAdopter)}
                     >
                       <input type="hidden" name="remember" value="true" />
                       <div className="rounded-md shadow-sm">
@@ -306,9 +306,23 @@ export default function Home({ theme }: HomeProps) {
                             type="email"
                             required
                             className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"
-                            ref={register}
+                            ref={register({
+                              required: 'Required',
+                              pattern: {
+                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                                message: 'Invalid email address',
+                              },
+                            })}
                             placeholder="Email address"
                           />
+                          <div
+                            style={{
+                              color: 'rgb(146, 70, 35',
+                              marginTop: '1px',
+                            }}
+                          >
+                            {errors.email && errors.email.message}
+                          </div>
                         </div>
                         <br />
                         <div className="-mt-px">
@@ -321,6 +335,11 @@ export default function Home({ theme }: HomeProps) {
                             ref={register}
                             placeholder="Name"
                           />
+                        </div>
+                        <div
+                          style={{ color: 'rgb(146, 70, 35', marginTop: '1px' }}
+                        >
+                          {errors.fullName && errors.fullName.message}
                         </div>
                       </div>
 
