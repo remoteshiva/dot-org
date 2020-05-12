@@ -1,6 +1,6 @@
 {
   "projects": {
     "dev": "remoteshiva-dev",
-    "prod": "remoteshiva-4b120"
+    "prod": "remoteshiva-prod"
   }
 }
