@@ -6,8 +6,8 @@ service cloud.firestore {
     }
     
     match /earlyadopters/{email} {
-    	allow create: if request.auth.uid != null;      
-    	allow update: if request.auth.uid != null;
+    	allow create: if true;
+    	allow update: if true;
 		}
   }
 }
