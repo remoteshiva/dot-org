@@ -4,8 +4,10 @@ The web application for `remoteshiva.org`.
 
 ## Quick Start
 1. For Firebase support: `npm install -g firebase-tools`
-2. Pull and `yarn install`, then change to packages/functions and run `yarn install` for server-side Firebase functions
-3. Run `yarn dev`
+2. `firebase login`
+3. `yarn config set ignore-engines true`
+4. `yarn install`, then change to packages/functions and run `yarn install` for server-side Firebase functions
+5. Run `yarn dev`
 
 
 ## Deployment
