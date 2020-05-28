@@ -120,3 +120,6 @@ dist
 
 # Firebase
 .firebase/
+
+# macOS
+.DS_Store

@@ -85,6 +85,9 @@ function Footer({ theme }) {
       <div>
         ©&nbsp;RemoteShiva&nbsp;
         {today.getFullYear()}
+        <br />
+        This initiative was made possible through ROI Community&apos;s
+        Coronavirus Response Micro Grant Program.
       </div>
     </PageFooter>
   );
