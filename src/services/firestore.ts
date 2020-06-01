@@ -5,7 +5,7 @@
 // Data-layer: https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial#firebase-in-react-setup
 // Controller-layer: https://github.com/briandesousa/firebase-with-react-hooks/blob/logrocket-blog/src/App.js
 
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
@@ -25,7 +25,11 @@ export const authenticateAnonymously = () => {
   return firebase.auth().signInAnonymously();
 };
 
-export const createEarlyAdopter = (email, fullName, isRabbiOrLeader) => {
+export const createEarlyAdopter = (
+  email: string,
+  fullName: string,
+  isRabbiOrLeader: boolean
+) => {
   return db.collection('earlyadopters').doc(email).set({
     fullName,
     isRabbiOrLeader,
