@@ -1,19 +1,11 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import { NavLinkProps } from 'react-router-dom';
 import { Theme } from '../../assets/theme';
 import shivaDesktop from '../../assets/images/shiva-desktop-800w.png';
 import shivaMobile from '../../assets/images/shiva-mobile-600w.png';
 
 interface NavigationProps {
   theme: Theme;
-}
-
-interface NavigationLinkProps extends NavLinkProps {
-  theme: Theme;
-  className?: string;
-  children: string;
-  to: string;
 }
 
 function Sample() {
