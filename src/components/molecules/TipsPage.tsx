@@ -54,7 +54,10 @@ export default function TipsPage({ theme }: NavigationProps) {
   return (
     <ThemeProvider theme={theme}>
       <div className="overflow-hidden rounded-lg">
-        <div className="px-4 py-5" style={{ maxWidth: '500px' }}>
+        <div
+          className="px-4 py-5"
+          style={{ maxWidth: '600px', margin: '14px' }}
+        >
           <Title>
             Tips for a holding a remote shiva
             <div
