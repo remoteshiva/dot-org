@@ -1,9 +1,13 @@
+/* eslint-disable no-console */
+/* eslint-disable no-alert */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { Portal } from 'react-portal';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
+
 import { Theme } from '../../assets/theme';
 import * as FirestoreService from '../../services/firestore';
 import Button from '../atoms/Button';
@@ -165,11 +169,10 @@ interface EarlyAdopter {
 
 export default function Home({ theme }: HomeProps) {
   const { register, handleSubmit, errors } = useForm();
+  const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const onSubmitEarlyAdopter = (values: EarlyAdopter) => {
     const { email, fullName, isRabbiOrLeader } = values;
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-    // @ts-ignore
     FirestoreService.authenticateAnonymously().then(
       // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
       // @ts-ignore
@@ -185,29 +188,26 @@ export default function Home({ theme }: HomeProps) {
     );
   };
 
-  const steps = [
+  const hydratedSteps = [
     {
       number: '1',
-      title: 'Create a shiva account',
-      body:
-        'Set basic information like the name of the deceased and the dates of shiva.',
+      title: t('steps.step1.title'),
+      body: t('steps.step1.body'),
     },
     {
       number: '2',
-      title: 'Add a video chat link',
-      body: 'Use any video conferencing platform, like Zoom or Google Meet.',
+      title: t('steps.step2.title'),
+      body: t('steps.step2.body'),
     },
     {
       number: '3',
-      title: 'Set visiting hours',
-      body:
-        "Visitors will see your set hours and who's planning to stop by when.",
+      title: t('steps.step3.title'),
+      body: t('steps.step3.body'),
     },
     {
       number: '4',
-      title: 'Invite people',
-      body:
-        'Send out a link to your shiva. No account creation required to attend.',
+      title: t('steps.step4.title'),
+      body: t('steps.step4.body'),
     },
   ];
 
@@ -460,7 +460,7 @@ export default function Home({ theme }: HomeProps) {
           style={{ flexDirection: 'row', justifyContent: 'space-around' }}
         >
           <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-4">
-            {steps.map((step) => (
+            {hydratedSteps.map((step) => (
               <div className="overflow-hidden rounded-lg">
                 <div className="px-4 py-5">
                   <StepCard

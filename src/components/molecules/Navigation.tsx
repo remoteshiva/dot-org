@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import {
   BrowserRouter as Router,
@@ -246,7 +246,9 @@ export default function Navigation({ theme }: NavigationProps) {
         <Switch>
           <Route exact path="/">
             <PageContainer>
-              <Home theme={theme} />
+              <Suspense fallback={<div>loading....</div>}>
+                <Home theme={theme} />
+              </Suspense>
             </PageContainer>
           </Route>
           <Route path="/about">
