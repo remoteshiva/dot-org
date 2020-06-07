@@ -9,7 +9,7 @@ interface NavigationProps {
 export default function TipsPage({ theme }: NavigationProps) {
   const Title = styled.div`
     padding-top: 72px;
-    width: 500px;
+    width: 600px;
     font-size: 3rem;
     font-family: Lora;
     display: flex;
