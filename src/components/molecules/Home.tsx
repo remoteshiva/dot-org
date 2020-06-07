@@ -164,13 +164,15 @@ interface EarlyAdopter {
   isRabbiOrLeader: boolean;
 }
 
-export default function Home({ theme, t }: HomeProps) {
+export default function Home({ theme }: HomeProps) {
   const { register, handleSubmit, errors } = useForm();
+  const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const onSubmitEarlyAdopter = (values: EarlyAdopter) => {
     const { email, fullName, isRabbiOrLeader } = values;
-
     FirestoreService.authenticateAnonymously().then(
+      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
       FirestoreService.createEarlyAdopter(email, fullName, isRabbiOrLeader)
         .then((earlyAdopter) => {
           alert(`Thank you for signing up`);
