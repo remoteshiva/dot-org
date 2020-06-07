@@ -9,7 +9,7 @@ interface NavigationProps {
 export default function About({ theme }: NavigationProps) {
   const Title = styled.div`
     padding-top: 72px;
-    width: 500px;
+    width: 600px;
     font-size: 3.5rem;
     font-family: Lora;
     display: flex;
