@@ -15,7 +15,7 @@ export default {
         step3: {
           title: 'Set visiting hours',
           body:
-            'Visitors will see your set hours and who&apos;s planning to stop by when.',
+            "Visitors will see your set hours and who's planning to stop by when.",
         },
         step4: {
           title: 'Invite people',
