@@ -620,12 +620,19 @@ export default function Home({ theme }: HomeProps) {
           style={{
             paddingBottom: '24px',
             display: 'flex',
+            flexDirection: 'column',
             justifyContent: 'center',
+            alignItems: 'center',
             color: `${theme.text.primary}`,
             fontSize: '16px',
           }}
         >
           <p>We&apos;d love to hear from you.</p>
+          <div style={{ paddingTop: '16px' }}>
+            <p>
+              <strong>info@remoteshiva.org</strong>
+            </p>
+          </div>
         </div>
         <Footer theme={theme} />
       </div>
