@@ -76,6 +76,7 @@ export default {
     new Dotenv(),
     new HTMLPlugin({
       template: path.join(PATHS.public, 'index.html'),
+      favicon: path.join(PATHS.public, 'favicon.ico'),
     }),
   ],
 };
