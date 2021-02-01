@@ -20,10 +20,11 @@ export default function Button({
   size = 'normal',
 }: ButtonProps) {
   const StyledButton = styled.button`
+  white-space: nowrap;
   font-size: 1rem;
   margin: 1em;
   padding: ${size === 'normal' ? '0.25em 1em' : '0.75em 1.75em'};
-  border-radius: 4px;
+  border-radius: 8px;
   transition: all 150ms ease-in-out 0ms;
   color: ${theme.text.secondary};
   background-color: ${

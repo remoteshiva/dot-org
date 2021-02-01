@@ -90,6 +90,9 @@ function Footer({ theme }) {
         ©&nbsp;RemoteShiva&nbsp;
         {today.getFullYear()}
         <br />
+        RemoteShiva is currently in beta. If you encounter any issues, please
+        contact info@remoteshiva.org.
+        <br />
         This initiative was made possible through ROI Community&apos;s
         Coronavirus Response Micro Grant Program.
       </div>
@@ -286,7 +289,7 @@ export default function Home({ theme }: HomeProps) {
                     className="text-4xl leading-6 font-medium"
                     style={{ paddingTop: '18px', paddingBottom: '18px' }}
                   >
-                    Coming Soon!
+                    {' '}
                   </h1>
                   <br />
                   <div className="mt-2">
@@ -294,8 +297,7 @@ export default function Home({ theme }: HomeProps) {
                       className="text-sm flex text-center"
                       style={{ paddingBottom: '24px', fontSize: '14px' }}
                     >
-                      We’re hard at work getting RemoteShiva ready for release.
-                      We’d love to keep you posted about our launch.
+                      Join our mailing list.
                     </p>
                     <form
                       className="mt-8"
@@ -389,7 +391,7 @@ export default function Home({ theme }: HomeProps) {
           style={{ fontSize: '16px', paddingTop: '60px', letterSpacing: '1px' }}
           className="flex align-center justify-center"
         >
-          COMING SOON
+          {'  '}
         </div>
         <h1
           style={{ padding: '14px', textAlign: 'center' }}
