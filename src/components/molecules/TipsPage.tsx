@@ -59,7 +59,7 @@ export default function TipsPage({ theme }: NavigationProps) {
           style={{ maxWidth: '600px', margin: '14px' }}
         >
           <Title>
-            Tips for a holding a remote shiva
+            Tips for holding a remote shiva
             <div
               style={{
                 paddingTop: '36px',
