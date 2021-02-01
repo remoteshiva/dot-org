@@ -156,7 +156,9 @@ export default function Navigation({ theme }: NavigationProps) {
                 <StyledExternalLink href="https://blog.remoteshiva.org/index.php/faq/">
                   FAQ
                 </StyledExternalLink>
-                <StyledExternalLink href="https://blog.remoteshiva.org/">Blog</StyledExternalLink>
+                <StyledExternalLink href="https://blog.remoteshiva.org/">
+                  Blog
+                </StyledExternalLink>
                 <Button
                   onClick={() => null}
                   size="big"
