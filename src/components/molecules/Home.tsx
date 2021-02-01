@@ -173,23 +173,23 @@ interface EarlyAdopter {
 export default function Home({ theme }: HomeProps) {
   const { register, handleSubmit, errors } = useForm();
   const { t } = useTranslation();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const onSubmitEarlyAdopter = (values: EarlyAdopter) => {
-    const { email, fullName, isRabbiOrLeader } = values;
-    FirestoreService.authenticateAnonymously().then(
-      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-      // @ts-ignore
-      FirestoreService.createEarlyAdopter(email, fullName, isRabbiOrLeader)
-        .then((earlyAdopter) => {
-          alert(`Thank you for signing up`);
-          setIsModalOpen(false);
-        })
-        .catch((error) => {
-          alert(`We could not sign you up. Please try again.`);
-          console.log(`Error returned by createEarlyAdopter: ${error}`);
-        })
-    );
-  };
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  // const onSubmitEarlyAdopter = (values: EarlyAdopter) => {
+  //   const { email, fullName, isRabbiOrLeader } = values;
+  //   FirestoreService.authenticateAnonymously().then(
+  //     // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+  //     // @ts-ignore
+  //     FirestoreService.createEarlyAdopter(email, fullName, isRabbiOrLeader)
+  //       .then((earlyAdopter) => {
+  //         alert(`Thank you for signing up`);
+  //         setIsModalOpen(false);
+  //       })
+  //       .catch((error) => {
+  //         alert(`We could not sign you up. Please try again.`);
+  //         console.log(`Error returned by createEarlyAdopter: ${error}`);
+  //       })
+  //   );
+  // };
 
   const hydratedSteps = [
     {
@@ -249,7 +249,7 @@ export default function Home({ theme }: HomeProps) {
 
   return (
     <div style={{ width: '100%' }}>
-      {isModalOpen && (
+      {/* {isModalOpen && (
         <Portal>
           <div className="fixed bottom-0 inset-x-0 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center">
             <div
@@ -385,7 +385,7 @@ export default function Home({ theme }: HomeProps) {
             </div>
           </div>
         </Portal>
-      )}
+      )} */}
       <StyledHome>
         <div
           style={{ fontSize: '16px', paddingTop: '60px', letterSpacing: '1px' }}
@@ -422,17 +422,9 @@ export default function Home({ theme }: HomeProps) {
             size="big"
             themeType="secondary"
             theme={theme}
-            // eslint-disable-next-line react/no-this-in-sfc
-            onClick={() => setIsModalOpen(true)}
+            onClick={() => null}
           >
-            <Link
-              to={{
-                pathname: '/', // TODO: change to real link
-                hash: '#contact',
-              }}
-            >
-              Send me updates
-            </Link>
+            <a href="https://app.remoteshiva.org/">Organize a shiva</a>
           </Button>
         </div>
       </StyledHome>
