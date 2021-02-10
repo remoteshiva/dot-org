@@ -1,12 +1,13 @@
-import React, { Suspense } from 'react';
+/* eslint-disable prettier/prettier */
+import React, { Suspense, useState } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import {
   BrowserRouter as Router,
-  Link,
   NavLink,
   NavLinkProps,
   Route,
   Switch,
+  useHistory,
 } from 'react-router-dom';
 import About from './About';
 import Example from './Example';
@@ -81,6 +82,7 @@ function NarrowContainer({ children }: ContainerProps) {
 }
 
 export default function Navigation({ theme }: NavigationProps) {
+  const history = useHistory();
   const navLinks = [
     // {
     //   to: '/how-it-works',
@@ -103,6 +105,7 @@ export default function Navigation({ theme }: NavigationProps) {
       content: 'Sample RemoteShiva',
     },
   ];
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const StyledNav = styled.div`
     position: fixed;
@@ -169,37 +172,97 @@ export default function Navigation({ theme }: NavigationProps) {
                 </Button>
               </div>
               <div className="-mr-2 flex items-center sm:hidden">
-                <button
-                  type="button"
-                  className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
-                >
-                  <svg
-                    className="block h-6 w-6"
-                    stroke="currentColor"
-                    fill="none"
-                    viewBox="0 0 24 24"
+                {!menuOpen && (
+                  <button
+                    type="button"
+                    className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
+                    onClick={() => setMenuOpen(!menuOpen)}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  </svg>
-                  <svg
-                    className="hidden h-6 w-6"
-                    stroke="currentColor"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
+                    <svg
+                      className="block h-6 w-6"
+                      stroke="currentColor"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M4 6h16M4 12h16M4 18h16"
+                      />
+                    </svg>
+                    <svg
+                      className="hidden h-6 w-6"
+                      stroke="currentColor"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+                )}
+                {menuOpen && (
+                  <div className="pt-4 sm bg-white">
+                    <div className="pt-8 pb-3 border-t border-gray-200">
+                      <div className="mt-64">
+                        <button
+                          type="button"
+                          onClick={() => setMenuOpen(false)}
+                          className="items-end"
+                        >
+                          <svg
+                            className="h-6 w-6"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M6 18L18 6M6 6l12 12"
+                            />
+                          </svg>
+                        </button>
+                        {navLinks.map(({ to, content }) => (
+                          <a
+                            key={to}
+                            href={to}
+                            className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
+                          >
+                            {content}
+                          </a>
+                        ))}
+                        <a
+                          href="https://blog.remoteshiva.org/index.php/faq/"
+                          className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
+                        >
+                          FAQ
+                        </a>
+                        <a
+                          href="https://blog.remoteshiva.org/"
+                          className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
+                        >
+                          Blog
+                        </a>
+                        <Button
+                          onClick={() => null}
+                          size="big"
+                          themeType="primary"
+                          theme={theme}
+                        >
+                          <a href="https://app.remoteshiva.org/">Log in</a>
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
