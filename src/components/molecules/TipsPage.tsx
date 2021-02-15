@@ -1,12 +1,15 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { Theme } from '../../assets/theme';
+import amplitude from 'amplitude-js';
 
 interface NavigationProps {
   theme: Theme;
 }
 
 export default function TipsPage({ theme }: NavigationProps) {
+  amplitude.getInstance().logEvent('Page_Tips');
+
   const Title = styled.div`
     padding-top: 72px;
     width: 600px;

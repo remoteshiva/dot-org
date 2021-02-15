@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import { Portal } from 'react-portal';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
+import amplitude from 'amplitude-js';
 
 import { Theme } from '../../assets/theme';
 import * as FirestoreService from '../../services/firestore';
@@ -171,6 +172,7 @@ interface EarlyAdopter {
 }
 
 export default function Home({ theme }: HomeProps) {
+  amplitude.getInstance().logEvent('Page_Home');
   const { register, handleSubmit, errors } = useForm();
   const { t } = useTranslation();
   // const [isModalOpen, setIsModalOpen] = useState(false);

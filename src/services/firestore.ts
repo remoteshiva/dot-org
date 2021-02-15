@@ -8,6 +8,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
+import amplitude from 'amplitude-js';
 
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -24,6 +25,8 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const analytics = firebase.analytics();
 
+amplitude.getInstance().init(process.env.FIREBASE_AMPLITUDE_KEY);
+
 export const authenticateAnonymously = () => {
   return firebase.auth().signInAnonymously();
 };
@@ -33,6 +36,7 @@ export const createEarlyAdopter = (
   fullName: string,
   isRabbiOrLeader: boolean
 ) => {
+  amplitude.getInstance().logEvent('Early_Adopter_Signup');
   return db.collection('earlyadopters').doc(email).set({
     fullName,
     isRabbiOrLeader,

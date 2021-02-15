@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { NavLinkProps } from 'react-router-dom';
 import { Theme } from '../../assets/theme';
+import amplitude from 'amplitude-js';
 import shivaDesktop from '../../assets/images/shiva-desktop-800w.png';
 import shivaMobile from '../../assets/images/shiva-mobile-600w.png';
 
@@ -33,6 +34,8 @@ function Sample() {
 }
 
 export default function Example({ theme }: NavigationProps) {
+  amplitude.getInstance().logEvent('Page_Example');
+
   const Title = styled.div`
     width: 100%;
     font-size: 3.5rem;
