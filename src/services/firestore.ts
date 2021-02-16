@@ -18,14 +18,14 @@ const firebaseConfig = {
   storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.FIREBASE_APP_ID,
-  measurementId: process.env.FIREBASE_MEASUREMENT_ID
+  measurementId: process.env.FIREBASE_MEASUREMENT_ID,
 };
 
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
-const analytics = firebase.analytics();
-
+firebase.analytics();
 amplitude.getInstance().init(process.env.FIREBASE_AMPLITUDE_KEY);
+amplitude.getInstance().logEvent(`Initialized`);
 
 export const authenticateAnonymously = () => {
   return firebase.auth().signInAnonymously();
