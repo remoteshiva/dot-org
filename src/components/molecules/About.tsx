@@ -1,7 +1,7 @@
 import React from 'react';
+import amplitude from 'amplitude-js';
 import styled, { ThemeProvider } from 'styled-components';
 import { Theme } from '../../assets/theme';
-import amplitude from 'amplitude-js';
 
 interface NavigationProps {
   theme: Theme;
